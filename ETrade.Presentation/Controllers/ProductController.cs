@@ -59,12 +59,17 @@ namespace ETrade.Presentation.Controllers
         [HttpGet("getallproductwithdetaillist")]
         public IActionResult GetAllProductWithDetailList()
         {
-            return Ok(service.GetAllProductWithDetailList());
+            return Ok(service.GetAllProductWithDetailList().Where(x=>x.CategoryId==1).ToList());
         }
         [HttpGet("getoneproductwithdetail/{id:int}")]
         public IActionResult GetOneProductWithDetail([FromRoute(Name ="id")]int id)
         {
             return Ok(service.GetOneProductWithDetail(id));
+        }
+        [HttpGet("getonepcproductwithdetail/{id:int}")]
+        public IActionResult GetOnePcProductWithDetail([FromRoute(Name ="id")]int id)
+        {
+            return Ok(service.GetOnePcProductWithDetail(id));
         }
         [HttpGet("productcategory/{id:int}")]
         public IActionResult ProductCategory([FromRoute()]int id)

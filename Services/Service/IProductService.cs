@@ -19,6 +19,9 @@ namespace Services.Service
         List<Product> GetLastProduct();
 
         Product GetOneProductWithDetail(int id);
+
+        Product GetOnePcProductWithDetail(int id);
+
         List<Product> GetAllProductWithDetailList();
     }
 }

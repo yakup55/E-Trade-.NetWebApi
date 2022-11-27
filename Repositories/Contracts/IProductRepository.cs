@@ -13,5 +13,6 @@ namespace Repositories.Contracts
         List<Product> GetLastProduct();
         List<Product> GetAllProductWithDetailList();
         Product GetOneProductWithDetail(int id);
+        Product GetOnePcProductWithDetail(int id);
     }
 }

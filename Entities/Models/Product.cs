@@ -38,6 +38,7 @@ namespace Entities.Models
         public ICollection<ProductComment>? ProductComments { get; set; }
 
         public ProductDetails? ProductDetails { get; set; }
+        public PcDetails? PcDetails { get; set; }
 
         public override string ToString()
         {

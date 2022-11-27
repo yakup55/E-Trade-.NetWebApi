@@ -16,21 +16,98 @@ namespace Repositories.Concrete.Config
         {
             builder.HasKey(x => x.ProductDetailsId);
             builder.Property(x => x.ProductExplanation).IsRequired();
-            //hasone eklemeye çalış
+            //pc
+            builder.Property(x => x.EkranBoyutu).IsRequired();
+            builder.Property(x => x.SDDKapasite).IsRequired();
+            builder.Property(x => x.Ram).IsRequired();
+            builder.Property(x => x.RamTipi).IsRequired();
+            builder.Property(x => x.İslemciTipi).IsRequired();
+            builder.Property(x => x.İslemciNesli).IsRequired();
+            builder.Property(x => x.EkranYenilemeHizi).IsRequired();
+            builder.Property(x => x.BellekHizi).IsRequired();
+            builder.Property(x => x.CihazAgirligi).IsRequired();
+            builder.Property(x => x.EkranCozunurlugu).IsRequired();
+
+          //  Phone
+            builder.Property(x => x.bluetooth).IsRequired();
+            builder.Property(x => x.cifthat).IsRequired();
+            builder.Property(x => x.dahilihafiza).IsRequired();
+            builder.Property(x => x.kameracözünürlügü).IsRequired();
+            builder.Property(x => x.pilgücü).IsRequired();
+            builder.Property(x => x.yüztanıma).IsRequired();
+            builder.Property(x => x.parmakizi).IsRequired();
+          //  Bag Shoes...
+            builder.Property(x => x.AyakkabiTipi).IsRequired();
+            builder.Property(x => x.Malzeme).IsRequired();
+            builder.Property(x => x.Cinsiyet).IsRequired();
+            builder.Property(x => x.YakaStili).IsRequired();
+            builder.Property(x => x.Tipi).IsRequired();
+
+            //Watch
+            builder.Property(x => x.AdımSayar).IsRequired();
+            builder.Property(x => x.GPS).IsRequired();
+            builder.Property(x => x.KalpRitmiOlcme).IsRequired();
+            builder.Property(x => x.Kamera).IsRequired();
+            builder.Property(x => x.SesliGorusme).IsRequired();
+            builder.Property(x => x.SuGecirme).IsRequired();
+            builder.Property(x => x.UykuTakibi).IsRequired();
+            builder.Property(x => x.UyumluMarka).IsRequired();
+
             builder.HasData(
-              new ProductDetails { ProductDetailsId = 1,SizeId=1,ColorId=1,ProductExplanation="ddd" },
-              new ProductDetails { ProductDetailsId = 2,SizeId=2,ColorId=2, ProductExplanation = "ddd" },
-              new ProductDetails { ProductDetailsId = 3,SizeId=3,ColorId=3, ProductExplanation = "ddd" },
-              new ProductDetails { ProductDetailsId = 4,SizeId=4,ColorId=4, ProductExplanation = "ddd" },
-              new ProductDetails { ProductDetailsId = 5,SizeId=1,ColorId=4, ProductExplanation = "ddd" },
-              new ProductDetails { ProductDetailsId = 6,SizeId=3,ColorId=5, ProductExplanation = "ddd" }
-                );
+              new ProductDetails { 
+                  ProductDetailsId = 1,
+                  EkranBoyutu = "", 
+                  SDDKapasite = "", 
+                  Ram = "", 
+                  RamTipi = "", 
+                  İslemciTipi = "",
+                  İslemciNesli = "",
+                  EkranYenilemeHizi = "",
+                  EkranCozunurlugu = "",
+                  BellekHizi = "", 
+                  CihazAgirligi = "",
+
+                  bluetooth = "",
+                  cifthat = "",
+                  dahilihafiza = "",
+                  kameracözünürlügü = "",
+                  pilgücü = "",
+                  yüztanıma = "",
+                  parmakizi = "",
+
+                  AyakkabiTipi = "",
+                  Malzeme = "",
+                  Cinsiyet = "",
+                  YakaStili = "",
+                  Tipi = "",
+
+                  AdımSayar = "",
+                  GPS = "",
+                  KalpRitmiOlcme = "",
+                  Kamera = "",
+                  SesliGorusme = "",
+                  SuGecirme = "",
+                  UykuTakibi = "",
+                  UyumluMarka = "",
+
+
+
+                  SizeId = 1, 
+                  ColorId = 1,
+                  NumberId = 1,
+                  ProductExplanation = "ddd"
+              }
+                ) ;
             builder.HasOne(x => x.Product).WithOne(x => x.ProductDetails).HasForeignKey<ProductDetails>(x => x.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
-            builder.HasOne(x=>x.Color).WithMany(x=>x.ProductDetails).HasForeignKey(x=>x.ColorId)
+            builder.HasOne(x => x.Color).WithMany(x => x.ProductDetails).HasForeignKey(x => x.ColorId)
                 .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.Size).WithMany(x => x.ProductDetails).HasForeignKey(x => x.SizeId)
                 .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Number).WithMany(x => x.ProductDetails).HasForeignKey(x => x.NumberId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Product).WithOne(x => x.ProductDetails).HasForeignKey<ProductDetails>(x => x.ProductId)
+               .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

@@ -58,6 +58,9 @@ namespace E_Trade.Extensions
             //COMMENT
             services.AddScoped<ICommentRepository, EFCommentRepository>();
             services.AddScoped<ICommentService, CommentManager>();
+            //NUMBER SHOES
+            services.AddScoped<INumberRepository, EFNumberRepository>();
+            services.AddScoped<INumberService, NumberManager>();
 
             //AUTHENTİCATİON
             //services.AddScoped<IAuthenticationService, AuthenticationManager>();

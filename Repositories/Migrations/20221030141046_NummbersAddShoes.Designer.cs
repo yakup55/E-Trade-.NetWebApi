@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.Concrete.Context;
 
@@ -11,9 +12,10 @@ using Repositories.Concrete.Context;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221030141046_NummbersAddShoes")]
+    partial class NummbersAddShoes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,138 +345,6 @@ namespace Repositories.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Entities.Models.PcDetails", b =>
-                {
-                    b.Property<int>("PcDetailsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PcDetailsId"), 1L, 1);
-
-                    b.Property<string>("BellekHızı")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CihazAgirligi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranBoyutu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranCozunurlugu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranYenilemeHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ram")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RamTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SDDKapasite")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciNesli")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PcDetailsId");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique()
-                        .HasFilter("[ProductId] IS NOT NULL");
-
-                    b.ToTable("PcDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            PcDetailsId = 1,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 2,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 3,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 4,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 5,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        });
-                });
-
             modelBuilder.Entity("Entities.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -589,56 +459,8 @@ namespace Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailsId"), 1L, 1);
 
-                    b.Property<string>("AdımSayar")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AyakkabiTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BellekHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CihazAgirligi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cinsiyet")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("ColorId")
                         .HasColumnType("int");
-
-                    b.Property<string>("EkranBoyutu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranCozunurlugu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranYenilemeHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GPS")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KalpRitmiOlcme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Kamera")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Malzeme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumberId")
                         .HasColumnType("int");
@@ -650,80 +472,8 @@ namespace Repositories.Migrations
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Ram")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RamTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SDDKapasite")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SesliGorusme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("SizeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("SuGecirme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UykuTakibi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UyumluMarka")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("YakaStili")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bluetooth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cifthat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("dahilihafiza")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("kameracözünürlügü")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("parmakizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pilgücü")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("yüztanıma")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciNesli")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductDetailsId");
 
@@ -743,40 +493,45 @@ namespace Repositories.Migrations
                         new
                         {
                             ProductDetailsId = 1,
-                            AdımSayar = "",
-                            AyakkabiTipi = "",
-                            BellekHizi = "",
-                            CihazAgirligi = "",
-                            Cinsiyet = "",
                             ColorId = 1,
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            GPS = "",
-                            KalpRitmiOlcme = "",
-                            Kamera = "",
-                            Malzeme = "",
                             NumberId = 1,
                             ProductExplanation = "ddd",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            SesliGorusme = "",
-                            SizeId = 1,
-                            SuGecirme = "",
-                            Tipi = "",
-                            UykuTakibi = "",
-                            UyumluMarka = "",
-                            YakaStili = "",
-                            bluetooth = "",
-                            cifthat = "",
-                            dahilihafiza = "",
-                            kameracözünürlügü = "",
-                            parmakizi = "",
-                            pilgücü = "",
-                            yüztanıma = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
+                            SizeId = 1
+                        },
+                        new
+                        {
+                            ProductDetailsId = 2,
+                            ColorId = 2,
+                            ProductExplanation = "ddd",
+                            SizeId = 2
+                        },
+                        new
+                        {
+                            ProductDetailsId = 3,
+                            ColorId = 3,
+                            ProductExplanation = "ddd",
+                            SizeId = 3
+                        },
+                        new
+                        {
+                            ProductDetailsId = 4,
+                            ColorId = 4,
+                            ProductExplanation = "ddd",
+                            SizeId = 4
+                        },
+                        new
+                        {
+                            ProductDetailsId = 5,
+                            ColorId = 4,
+                            ProductExplanation = "ddd",
+                            SizeId = 1
+                        },
+                        new
+                        {
+                            ProductDetailsId = 6,
+                            ColorId = 5,
+                            ProductExplanation = "ddd",
+                            SizeId = 3
                         });
                 });
 
@@ -936,15 +691,15 @@ namespace Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "418aa600-cf67-431b-a3cb-774ae92c9942",
-                            ConcurrencyStamp = "2b204a86-2f82-4aac-925b-85b05b51abea",
+                            Id = "3612b257-49e2-4e68-902b-22cc8083e1c7",
+                            ConcurrencyStamp = "2e805b4b-125a-408d-9923-ae6b93d3568f",
                             Name = "MANAGER",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "6e18cfd5-e95b-4652-884a-5704ee5a9830",
-                            ConcurrencyStamp = "b9d5e4d4-65d1-427c-b0c8-173f364e3d3e",
+                            Id = "651b02ba-3ac2-4bc6-b7c0-797b8ca34404",
+                            ConcurrencyStamp = "f6d7d6a5-c377-417b-b00b-70e88eff20e1",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -1054,16 +809,6 @@ namespace Repositories.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Models.PcDetails", b =>
-                {
-                    b.HasOne("Entities.Models.Product", "Product")
-                        .WithOne("PcDetails")
-                        .HasForeignKey("Entities.Models.PcDetails", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Entities.Models.Product", b =>
@@ -1209,8 +954,6 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Entities.Models.Product", b =>
                 {
-                    b.Navigation("PcDetails");
-
                     b.Navigation("ProductComments");
 
                     b.Navigation("ProductDetails");

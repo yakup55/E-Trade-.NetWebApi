@@ -15,6 +15,7 @@ namespace E_Trade.Profiles
             CreateMap<SizeDto,Size>().ReverseMap();
             CreateMap<UserDtoRegistraction,User>().ReverseMap();
             CreateMap<CommentDto,Comment>().ReverseMap();
+            CreateMap<NumberDto,Number>().ReverseMap();
         }
     }
 }

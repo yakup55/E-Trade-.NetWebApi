@@ -31,9 +31,15 @@ namespace Repositories.EntityFramework
             return context.Products.Include(x => x.ProductDetails).Include(x => x.Category).ToList().Where(x => x.ProductId == id).SingleOrDefault();
         }
 
+
         public List<Product> PopularsProduct(Expression<Func<Product, bool>> filter = null)
         {
             return context.Products.Where(filter).ToList();
+        }
+
+        public Product GetOnePcProductWithDetail(int id)
+        {
+            return context.Products.Include(x => x.PcDetails).Include(x => x.Category).Where(x=>x.ProductId==id).ToList().SingleOrDefault();
         }
     }
 }

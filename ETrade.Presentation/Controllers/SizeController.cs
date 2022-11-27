@@ -43,5 +43,10 @@ namespace ETrade.Presentation.Controllers
             
             return NoContent();
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdateSize([FromBody]Size size, [FromRoute] int id)
+        {
+            return Accepted(service.UpdateSize(size, id));
+        }
     }
 }

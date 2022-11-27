@@ -22,6 +22,7 @@ namespace Repositories.Concrete.Context
         public DbSet<Product>? Products { get; set; }
         public DbSet<ProductDetails>? ProductDetails { get; set; }
         public DbSet<ProductComment>? ProductComments { get; set; }
+        public DbSet<Number>? Numbers { get; set; }
 
         public AppDbContext(DbContextOptions <AppDbContext> options) : base(options)
         {

@@ -7,7 +7,9 @@
             public SizeNotFoundException(int id) : base($"Size with {id} could not found")
             {
             }
-        }
 
+
+
+        }
     }
 }

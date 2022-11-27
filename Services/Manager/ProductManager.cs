@@ -47,6 +47,16 @@ namespace Services.Manager
             productRepository.Delete(delete);
         }
 
+        public Product GetOnePcProductWithDetail(int id)
+        {
+            var one= productRepository.GetOnePcProductWithDetail(id);
+            if (one is null)
+            {
+                throw new PcProductNotFoundException(id);
+            }
+            return one;
+        }
+
         public List<Product> GetAllProductWithDetailList()
         {
             return productRepository.GetAllProductWithDetailList();
@@ -56,6 +66,8 @@ namespace Services.Manager
         {
             return productRepository.GetLastProduct();
         }
+
+       
 
         public Product GetOneProduct(int id)
         {

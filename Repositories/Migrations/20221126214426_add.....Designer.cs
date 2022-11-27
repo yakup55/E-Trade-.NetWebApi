@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.Concrete.Context;
 
@@ -11,9 +12,10 @@ using Repositories.Concrete.Context;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221126214426_add....")]
+    partial class add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -589,23 +591,11 @@ namespace Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailsId"), 1L, 1);
 
-                    b.Property<string>("AdımSayar")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AyakkabiTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("BellekHizi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CihazAgirligi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cinsiyet")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -621,22 +611,6 @@ namespace Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EkranYenilemeHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GPS")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KalpRitmiOlcme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Kamera")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Malzeme")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -662,60 +636,8 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SesliGorusme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("SizeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("SuGecirme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UykuTakibi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UyumluMarka")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("YakaStili")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bluetooth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cifthat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("dahilihafiza")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("kameracözünürlügü")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("parmakizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pilgücü")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("yüztanıma")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("İslemciNesli")
                         .IsRequired()
@@ -743,38 +665,18 @@ namespace Repositories.Migrations
                         new
                         {
                             ProductDetailsId = 1,
-                            AdımSayar = "",
-                            AyakkabiTipi = "",
                             BellekHizi = "",
                             CihazAgirligi = "",
-                            Cinsiyet = "",
                             ColorId = 1,
                             EkranBoyutu = "",
                             EkranCozunurlugu = "",
                             EkranYenilemeHizi = "",
-                            GPS = "",
-                            KalpRitmiOlcme = "",
-                            Kamera = "",
-                            Malzeme = "",
                             NumberId = 1,
                             ProductExplanation = "ddd",
                             Ram = "",
                             RamTipi = "",
                             SDDKapasite = "",
-                            SesliGorusme = "",
                             SizeId = 1,
-                            SuGecirme = "",
-                            Tipi = "",
-                            UykuTakibi = "",
-                            UyumluMarka = "",
-                            YakaStili = "",
-                            bluetooth = "",
-                            cifthat = "",
-                            dahilihafiza = "",
-                            kameracözünürlügü = "",
-                            parmakizi = "",
-                            pilgücü = "",
-                            yüztanıma = "",
                             İslemciNesli = "",
                             İslemciTipi = ""
                         });
@@ -936,15 +838,15 @@ namespace Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "418aa600-cf67-431b-a3cb-774ae92c9942",
-                            ConcurrencyStamp = "2b204a86-2f82-4aac-925b-85b05b51abea",
+                            Id = "23d079a8-e721-4182-beea-0b0cc64f7fb3",
+                            ConcurrencyStamp = "6b073e5b-03f5-4848-8409-a2ff46d455b0",
                             Name = "MANAGER",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "6e18cfd5-e95b-4652-884a-5704ee5a9830",
-                            ConcurrencyStamp = "b9d5e4d4-65d1-427c-b0c8-173f364e3d3e",
+                            Id = "0a404455-b8a8-479f-8daa-5039598600d0",
+                            ConcurrencyStamp = "b5af37da-c175-4813-99cd-2f9b6762b2ef",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
