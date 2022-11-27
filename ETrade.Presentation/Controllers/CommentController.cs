@@ -5,6 +5,7 @@ using Services.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,11 +16,14 @@ namespace ETrade.Presentation.Controllers
     public class CommentController:ControllerBase
     {
         private readonly ICommentService service;
+        private readonly IProductService pservice;
 
-        public CommentController(ICommentService service)
+        public CommentController(ICommentService service, IProductService pservice)
         {
             this.service = service;
+            this.pservice = pservice;
         }
+
         [HttpGet]
         public IActionResult GetCommentList()
         {
@@ -30,9 +34,15 @@ namespace ETrade.Presentation.Controllers
         {
             return Ok(service.GetOneComment(id));
         }
+        [HttpGet("oneCommentProduct/{id:int}")]
+        public IActionResult OneCommentProduct([FromRoute(Name ="id")]int id)
+        {
+            return Ok(service.GetCommentList().Where(x=>x.ProductId==id && x.CommentStatus==true).ToList());
+        }
         [HttpPost]
         public IActionResult AddComment([FromBody] CommentDto comment)
         {
+            comment.CommentStatus = false;
             return Ok(service.AddComment(comment));
         }
         [HttpPut("{id}")]

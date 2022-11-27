@@ -9,18 +9,24 @@ namespace Entities.Models
 {
     public class Product
     {
-        public Product(int productId, string? productName, string? productImage, int productPrice, DateTime productDate)
+       
+        public Product()
+        {
+
+        }
+
+        public Product(int productId, string? productName, string? productImage, int productPrice, DateTime productDate, bool productStatus, int? categoryId, Category? category, ICollection<ProductComment>? productComments, ProductDetails? productDetails, PcDetails? pcDetails)
         {
             ProductId = productId;
             ProductName = productName;
             ProductImage = productImage;
             ProductPrice = productPrice;
             ProductDate = productDate;
+            ProductStatus = productStatus;
+            CategoryId = categoryId;
+            Category = category;
         }
-        public Product()
-        {
 
-        }
         [Key]
         [Required]
         public int ProductId { get; set; }
@@ -31,11 +37,12 @@ namespace Entities.Models
         public string? ProductImage { get; set; }
         public int ProductPrice { get; set; }
         public DateTime ProductDate { get; set; }
+        public bool ProductStatus { get; set; }
 
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        public ICollection<ProductComment>? ProductComments { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
 
         public ProductDetails? ProductDetails { get; set; }
         public PcDetails? PcDetails { get; set; }

@@ -16,11 +16,17 @@ namespace Entities.Models
         [MinLength(5)]
         public string? CommentName { get; set; }
         [Required]
+        [MinLength(5)]
+        public string? CommentSubject { get; set; }
+        [Required]
         [MinLength(10)]
         [MaxLength(100)]
         public string? Message { get; set; }
 
-        public ICollection<ProductComment>? ProductComments { get; set; }
+        [Required]
+        public bool CommentStatus { get; set; }
 
+        public int? ProductId { get; set; }
+        public Product? Product { get; set; }
     }
 }

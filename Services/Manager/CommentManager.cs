@@ -60,6 +60,8 @@ namespace Services.Manager
             return one;
         }
 
+        
+
         public Comment UpdateComment(CommentDto commentDto, int id)
         {
             if (commentDto is null)
@@ -69,6 +71,8 @@ namespace Services.Manager
             var update = GetOneComment(id);
             update.CommentName = commentDto.CommentName;
             update.Message = commentDto.Message;
+            update.CommentSubject = commentDto.CommentSubject;
+            update.CommentStatus = commentDto.CommentStatus;
             repository.Update(update);
             return update;
         }

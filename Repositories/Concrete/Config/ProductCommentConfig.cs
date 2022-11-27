@@ -14,13 +14,13 @@ namespace Repositories.Concrete.Config
     {
         public void Configure(EntityTypeBuilder<ProductComment> builder)
         {
-            builder.HasKey(x => x.ProductCommentId);
-            //PRODUCT-COMMENT
-            builder.HasOne(x => x.Product).WithMany(x => x.ProductComments).HasForeignKey(x => x.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
-            //COMMENT-PRODUCT
-            builder.HasOne(x=>x.Comment).WithMany(x=>x.ProductComments).HasForeignKey(x=>x.CommentId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //builder.HasKey(x => x.ProductCommentId);
+            ////PRODUCT-COMMENT
+            //builder.HasOne(x => x.Product).WithMany(x => x.ProductComments).HasForeignKey(x => x.ProductId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            ////COMMENT-PRODUCT
+            //builder.HasOne(x=>x.Comment).WithMany(x=>x.ProductComments).HasForeignKey(x=>x.CommentId)
+            //    .OnDelete(DeleteBehavior.Cascade);
             builder.HasData(
                 new ProductComment
                 {

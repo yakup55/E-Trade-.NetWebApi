@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.Concrete.Context;
 
@@ -11,9 +12,10 @@ using Repositories.Concrete.Context;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221127093330_addStatus")]
+    partial class addStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,12 +205,7 @@ namespace Repositories.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.HasKey("CommentId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Comments");
 
@@ -960,15 +957,15 @@ namespace Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fc94d246-650e-4475-a43e-88075cf15e18",
-                            ConcurrencyStamp = "770e2eda-82c2-4afd-bede-a73cda626210",
+                            Id = "4dae95e8-998f-4add-b8d6-b4f40824cb6c",
+                            ConcurrencyStamp = "f049a7f7-1483-4c7a-806d-ce7f25b0a6b3",
                             Name = "MANAGER",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "90068563-1347-4078-8d6d-2c2637a67b7d",
-                            ConcurrencyStamp = "4437d3c5-fd19-49be-915a-97d67714d1fe",
+                            Id = "f45fdca6-c363-492e-aa25-b38fb994d745",
+                            ConcurrencyStamp = "00e53d9c-7b74-4ce9-9294-d02e09211ad1",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -1080,15 +1077,6 @@ namespace Repositories.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Entities.Models.Comment", b =>
-                {
-                    b.HasOne("Entities.Models.Product", "Product")
-                        .WithMany("Comments")
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Entities.Models.PcDetails", b =>
                 {
                     b.HasOne("Entities.Models.Product", "Product")
@@ -1112,12 +1100,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Entities.Models.ProductComment", b =>
                 {
                     b.HasOne("Entities.Models.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("CommentId");
+                        .WithMany("ProductComments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Entities.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
+                        .WithMany("ProductComments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Comment");
 
@@ -1223,6 +1213,11 @@ namespace Repositories.Migrations
                     b.Navigation("ProductDetails");
                 });
 
+            modelBuilder.Entity("Entities.Models.Comment", b =>
+                {
+                    b.Navigation("ProductComments");
+                });
+
             modelBuilder.Entity("Entities.Models.Gender", b =>
                 {
                     b.Navigation("Users");
@@ -1235,9 +1230,9 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Entities.Models.Product", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("PcDetails");
+
+                    b.Navigation("ProductComments");
 
                     b.Navigation("ProductDetails");
                 });

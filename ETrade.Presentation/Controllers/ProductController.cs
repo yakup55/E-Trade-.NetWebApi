@@ -26,16 +26,18 @@ namespace ETrade.Presentation.Controllers
         [HttpGet("getlastproduct")]
         public IActionResult GetLastProduct()
         {
-            return Ok(service.GetLastProduct());
+            
+            return Ok(service.GetLastProduct().Where(x=>x.ProductStatus==true).ToList());
         }
         [HttpGet]
         public IActionResult GetProductList()
         {
-            return Ok(service.GetProductList());
+            return Ok(service.GetProductList().Where(x=>x.ProductStatus==true).ToList());
         }
         [HttpPost]
         public IActionResult AddProduct([FromBody] ProductDto product)
         {
+            
             service.AddProduct(product);
             return Ok(product);
         }
@@ -74,12 +76,12 @@ namespace ETrade.Presentation.Controllers
         [HttpGet("productcategory/{id:int}")]
         public IActionResult ProductCategory([FromRoute()]int id)
         {
-            return Ok(service.GetProductList().Where(x => x.CategoryId == id));
+            return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus==true));
         }
         [HttpGet("popularproduct")]
         public IActionResult PopularProduct()
         {
-            return Ok(service.GetProductList().Where(x => x.ProductId ==18 || x.ProductId==15 || x.ProductId == 12 || x.ProductId == 21 || x.ProductId == 22 || x.ProductId == 30).ToList());
+            return Ok(service.GetProductList().Where(x => x.ProductId ==18 || x.ProductId==15 || x.ProductId == 12 || x.ProductId == 21 || x.ProductId == 22 || x.ProductId == 30 &&x.ProductStatus==true).ToList());
         }
     }
 }

@@ -10,6 +10,8 @@ namespace Entities.Dtos
     {
         public string CommentName { get; set; }
         public string Message { get; set; }
-        public int ProductCommentsId { get; set; }
+        public string CommentSubject { get; set; }
+        public bool CommentStatus { get; set; }
+        public int ProductId { get; set; }
     }
 }

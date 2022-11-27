@@ -17,12 +17,13 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.ProductName).IsRequired();
             builder.Property(x => x.ProductImage).IsRequired();
             builder.Property(x => x.ProductPrice).HasDefaultValue(100);
+            builder.Property(x => x.ProductStatus).IsRequired();
             builder.Property(b => b.ProductDate).HasDefaultValueSql("GETDATE()");
             builder.HasData(
 
-                new Product { ProductId = 1, ProductName = "Tişört", ProductImage = "dddddd", ProductPrice = 150},
-                new Product { ProductId = 2, ProductName = "Pantolon", ProductImage = "dddddd", ProductPrice = 350 },
-                new Product { ProductId = 3, ProductName = "Hırka", ProductImage = "dddddd", ProductPrice = 200 }
+                new Product { ProductId = 1, ProductName = "Tişört", ProductImage = "dddddd", ProductPrice = 150,ProductStatus=false},
+                new Product { ProductId = 2, ProductName = "Pantolon", ProductImage = "dddddd", ProductPrice = 350, ProductStatus = false },
+                new Product { ProductId = 3, ProductName = "Hırka", ProductImage = "dddddd", ProductPrice = 200, ProductStatus = false }
                 
                 );
             builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);

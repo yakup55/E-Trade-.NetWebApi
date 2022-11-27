@@ -107,6 +107,7 @@ namespace Services.Manager
             update.ProductDate = product.ProductDate;
             update.ProductDetails = product.ProductDetails;
             update.ProductPrice = product.ProductPrice;
+            update.ProductStatus=product.ProductStatus;
             productRepository.Update(update);
             return update;
 
