@@ -16,12 +16,10 @@ namespace ETrade.Presentation.Controllers
     public class CommentController:ControllerBase
     {
         private readonly ICommentService service;
-        private readonly IProductService pservice;
 
-        public CommentController(ICommentService service, IProductService pservice)
+        public CommentController(ICommentService service)
         {
             this.service = service;
-            this.pservice = pservice;
         }
 
         [HttpGet]
@@ -46,9 +44,23 @@ namespace ETrade.Presentation.Controllers
             return Ok(service.AddComment(comment));
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateComment([FromBody]CommentDto comment,[FromRoute]int id)
+        public IActionResult UpdateComment([FromBody]Comment comment,[FromRoute]int id)
         {
             return Ok(Accepted(service.UpdateComment(comment, id)));
+        }
+        [HttpGet("commetactive/{id:int}")]
+        public IActionResult CommentActive([FromRoute(Name = "id")]int id)
+        {
+            var status = service.GetOneComment(id);
+            status.CommentStatus = true;
+            return Ok(Accepted(service.UpdateComment(status,id)));
+        }
+        [HttpGet("commentpassive/{id:int}")]
+        public IActionResult CommentPassive([FromRoute(Name ="id")]int id)
+        {
+            var status = service.GetOneComment(id);
+            status.CommentStatus = false;
+            return Ok(Accepted(service.UpdateComment(status, id)));
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteComment([FromRoute]int id)

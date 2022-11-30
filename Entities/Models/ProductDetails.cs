@@ -93,6 +93,33 @@ namespace Entities.Models
         [Required]
         public string? UyumluMarka { get; set; }
 
+        //HEADPHONE DETAIL
+        [Required]
+        public string? GurultuOnleme { get; set; }
+        [Required]
+        public string? BluetoothVersiyon { get; set; }
+        [Required]
+        public string? CiftTelefonDestegi { get; set; }
+        [Required]
+        public string? KullanimTipi { get; set; }
+        [Required]
+        public string? SuyaTereDayanikli { get; set; }
+
+        //TV DETAIL
+        [Required]
+        public string? DahiliUyduAlici { get; set; }
+        [Required]
+        public string? EkranEbati { get; set; }
+        [Required]
+        public string? EkranFormati { get; set; }
+        [Required]
+        public string? Wifi { get; set; }
+        [Required]
+        public string? Kurulum { get; set; }
+        [Required]
+        public string? PcBaglantisi { get; set; }
+        [Required]
+        public string? HdmiGirisleri { get; set; }
 
         public int? ProductId { get; set; }
         public Product? Product { get; set; }

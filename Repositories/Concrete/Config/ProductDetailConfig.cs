@@ -53,6 +53,20 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.UykuTakibi).IsRequired();
             builder.Property(x => x.UyumluMarka).IsRequired();
 
+            //HEADPHONE
+            builder.Property(x => x.GurultuOnleme).IsRequired();
+            builder.Property(x => x.BluetoothVersiyon).IsRequired();
+            builder.Property(x => x.CiftTelefonDestegi).IsRequired();
+            builder.Property(x => x.SuyaTereDayanikli).IsRequired();
+
+            //TV
+            builder.Property(x => x.DahiliUyduAlici).IsRequired();
+            builder.Property(x => x.EkranEbati).IsRequired();
+            builder.Property(x => x.EkranFormati).IsRequired();
+            builder.Property(x => x.Wifi).IsRequired();
+            builder.Property(x => x.PcBaglantisi).IsRequired();
+            builder.Property(x => x.HdmiGirisleri).IsRequired();
+
             builder.HasData(
               new ProductDetails { 
                   ProductDetailsId = 1,
@@ -90,6 +104,21 @@ namespace Repositories.Concrete.Config
                   UykuTakibi = "",
                   UyumluMarka = "",
 
+                  GurultuOnleme="",
+                  BluetoothVersiyon="",
+                  CiftTelefonDestegi ="",
+                  KullanimTipi="",
+                  SuyaTereDayanikli="",
+
+
+
+                  DahiliUyduAlici="",
+                  EkranEbati="",
+                  EkranFormati="",
+                  Wifi="",
+                  Kurulum="",
+                  PcBaglantisi="",
+                  HdmiGirisleri="",
 
 
                   SizeId = 1, 

@@ -14,7 +14,7 @@ namespace Services.Service
         List<Comment> GetCommentList(Expression<Func<Comment, bool>> filter = null);
         Comment GetOneComment(int id);
         Comment AddComment(CommentDto commentDto);
-        Comment UpdateComment(CommentDto commentDto,int id);
+        Comment UpdateComment(Comment commentDto,int id);
         void DeleteComment(int id);
 
     }

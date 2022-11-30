@@ -11,6 +11,7 @@ namespace Entities.Dtos
         public string? ProductName { get; set; }
         public string? ProductImage { get; set; }
         public int ProductPrice { get; set; }
+        public bool ProductStatus { get; set; }
         public int CategoryId { get; set; }
     }
 }

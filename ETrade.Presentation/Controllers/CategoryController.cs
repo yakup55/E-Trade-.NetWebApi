@@ -28,6 +28,7 @@ namespace ETrade.Presentation.Controllers
         [HttpPost]
         public IActionResult AddCategory([FromBody] CategoryDto categoryDto)
         {
+            categoryDto.CategoryStatus = true;
             service.AddCategory(categoryDto);
             return Ok(categoryDto);
         }
@@ -46,17 +47,32 @@ namespace ETrade.Presentation.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCategory([FromRoute] int id, [FromBody] Category category)
         {
+            category.CategoryStatus = true;
             return Accepted(service.UpdateCategory(category, id));
         }
         [HttpGet("getlastcategory")]
         public IActionResult GetLastCategory()
         {
-            return Ok(service.LastCategory());
+            return Ok(service.LastCategory().Where(x=>x.CategoryStatus==true));
         }
         [HttpGet("popularcategory")]
         public IActionResult PopularCategory()
         {
-            return Ok(service.GetCategoriesList().Where(x => x.CategoryId == 8 || x.CategoryId == 1 || x.CategoryId == 5 || x.CategoryId == 6).ToList());
+            return Ok(service.GetCategoriesList().Where(x => x.CategoryId == 8 || x.CategoryId == 1 || x.CategoryId == 5 || x.CategoryId == 6 && x.CategoryStatus==true).ToList());
+        }
+        [HttpGet("categoryactive/{id:int}")]
+        public IActionResult CategroryActive([FromRoute(Name ="id")]int id)
+        {
+            var status = service.GetCategoryById(id);
+            status.CategoryStatus = true;
+            return Ok(Accepted(service.UpdateCategory(status, id)));
+        }
+        [HttpGet("categorypassive/{id:int}")]
+        public IActionResult CatgoryPassive([FromRoute(Name = "id")]int id)
+        {
+            var status =service.GetCategoryById(id);
+            status.CategoryStatus= false;
+            return Ok(Accepted(service.UpdateCategory(status, id)));
         }
     }
 }

@@ -68,13 +68,8 @@ namespace ETrade.Presentation.Controllers
         {
             return Ok(service.GetOneProductWithDetail(id));
         }
-        [HttpGet("getonepcproductwithdetail/{id:int}")]
-        public IActionResult GetOnePcProductWithDetail([FromRoute(Name ="id")]int id)
-        {
-            return Ok(service.GetOnePcProductWithDetail(id));
-        }
         [HttpGet("productcategory/{id:int}")]
-        public IActionResult ProductCategory([FromRoute()]int id)
+        public IActionResult ProductCategory([FromRoute(Name ="id")]int id)
         {
             return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus==true));
         }
@@ -83,5 +78,20 @@ namespace ETrade.Presentation.Controllers
         {
             return Ok(service.GetProductList().Where(x => x.ProductId ==18 || x.ProductId==15 || x.ProductId == 12 || x.ProductId == 21 || x.ProductId == 22 || x.ProductId == 30 &&x.ProductStatus==true).ToList());
         }
+        [HttpGet("productactive/{id:int}")]
+       public IActionResult ProductActive([FromRoute(Name ="id")]int id)
+        {
+            var status = service.GetOneProduct(id);
+            status.ProductStatus = true;
+            return Ok(Accepted(service.UpdateProduct(status, id)));
+        }
+        [HttpGet("productpassive/{id:int}")]
+        public IActionResult ProductPassive([FromRoute(Name = "id")] int id)
+        {
+            var status = service.GetOneProduct(id);
+            status.ProductStatus = false;
+            return Ok(Accepted(service.UpdateProduct(status, id)));
+        }
+
     }
 }

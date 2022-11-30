@@ -36,10 +36,5 @@ namespace Repositories.EntityFramework
         {
             return context.Products.Where(filter).ToList();
         }
-
-        public Product GetOnePcProductWithDetail(int id)
-        {
-            return context.Products.Include(x => x.PcDetails).Include(x => x.Category).Where(x=>x.ProductId==id).ToList().SingleOrDefault();
-        }
     }
 }

@@ -62,7 +62,7 @@ namespace Services.Manager
 
         
 
-        public Comment UpdateComment(CommentDto commentDto, int id)
+        public Comment UpdateComment(Comment commentDto, int id)
         {
             if (commentDto is null)
             {

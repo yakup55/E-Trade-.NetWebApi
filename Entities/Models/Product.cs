@@ -34,7 +34,9 @@ namespace Entities.Models
         [MinLength(3)]
         [MaxLength(1000)]
         public string? ProductName { get; set; }
+        [Required]
         public string? ProductImage { get; set; }
+        [Required]
         public int ProductPrice { get; set; }
         public DateTime ProductDate { get; set; }
         public bool ProductStatus { get; set; }

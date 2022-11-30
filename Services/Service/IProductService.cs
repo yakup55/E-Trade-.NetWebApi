@@ -20,7 +20,7 @@ namespace Services.Service
 
         Product GetOneProductWithDetail(int id);
 
-        Product GetOnePcProductWithDetail(int id);
+        
 
         List<Product> GetAllProductWithDetailList();
     }

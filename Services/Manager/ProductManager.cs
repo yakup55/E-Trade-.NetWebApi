@@ -46,17 +46,6 @@ namespace Services.Manager
             var delete = GetOneProduct(id);
             productRepository.Delete(delete);
         }
-
-        public Product GetOnePcProductWithDetail(int id)
-        {
-            var one= productRepository.GetOnePcProductWithDetail(id);
-            if (one is null)
-            {
-                throw new PcProductNotFoundException(id);
-            }
-            return one;
-        }
-
         public List<Product> GetAllProductWithDetailList()
         {
             return productRepository.GetAllProductWithDetailList();
@@ -66,9 +55,6 @@ namespace Services.Manager
         {
             return productRepository.GetLastProduct();
         }
-
-       
-
         public Product GetOneProduct(int id)
         {
             var product = productRepository.GetOne(x => x.ProductId == id);
@@ -78,7 +64,6 @@ namespace Services.Manager
             }
             return product;
         }
-
         public Product GetOneProductWithDetail(int id)
         {
           var one= productRepository.GetOneProductWithDetail(id);
@@ -97,9 +82,7 @@ namespace Services.Manager
         public List<Product> PopularsProduct(Expression<Func<Product, bool>> filter = null)
         {
             return productRepository.GetList(filter);
-            
         }
-
         public Product UpdateProduct(Product product, int id)
         {
             var update = GetOneProduct(id);
@@ -110,7 +93,6 @@ namespace Services.Manager
             update.ProductStatus=product.ProductStatus;
             productRepository.Update(update);
             return update;
-
         }
     }
 }
