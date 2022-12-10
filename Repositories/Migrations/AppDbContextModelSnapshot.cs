@@ -239,6 +239,45 @@ namespace Repositories.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entities.Models.Contact", b =>
+                {
+                    b.Property<int>("ContactId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactId"), 1L, 1);
+
+                    b.Property<string>("ContactMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactSubject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ContactId");
+
+                    b.ToTable("Contacts");
+
+                    b.HasData(
+                        new
+                        {
+                            ContactId = 1,
+                            ContactMail = "yakup.0950@gmail.com",
+                            ContactMessage = "test mesajıdır",
+                            ContactName = "Yakup",
+                            ContactSubject = "Deneme"
+                        });
+                });
+
             modelBuilder.Entity("Entities.Models.Gender", b =>
                 {
                     b.Property<int>("GenderId")
@@ -361,138 +400,6 @@ namespace Repositories.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Entities.Models.PcDetails", b =>
-                {
-                    b.Property<int>("PcDetailsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PcDetailsId"), 1L, 1);
-
-                    b.Property<string>("BellekHızı")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CihazAgirligi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranBoyutu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranCozunurlugu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranYenilemeHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ram")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RamTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SDDKapasite")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciNesli")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("İslemciTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PcDetailsId");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique()
-                        .HasFilter("[ProductId] IS NOT NULL");
-
-                    b.ToTable("PcDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            PcDetailsId = 1,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 2,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 3,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 4,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        },
-                        new
-                        {
-                            PcDetailsId = 5,
-                            BellekHızı = "",
-                            CihazAgirligi = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranYenilemeHizi = "",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
-                        });
-                });
-
             modelBuilder.Entity("Entities.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -605,25 +512,13 @@ namespace Repositories.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Entities.Models.ProductDetails", b =>
+            modelBuilder.Entity("Entities.Models.ProductDetailHeadPhone", b =>
                 {
-                    b.Property<int>("ProductDetailsId")
+                    b.Property<int>("HeadPhoneId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailsId"), 1L, 1);
-
-                    b.Property<string>("AdımSayar")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AyakkabiTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BellekHizi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeadPhoneId"), 1L, 1);
 
                     b.Property<string>("BluetoothVersiyon")
                         .IsRequired()
@@ -633,7 +528,32 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CihazAgirligi")
+                    b.Property<string>("GurultuOnleme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KullanimTipi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuyaTereDayanikli")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HeadPhoneId");
+
+                    b.ToTable("ProductDetailHeadPhones");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailManWomen", b =>
+                {
+                    b.Property<int>("ProductDetailManWomenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailManWomenId"), 1L, 1);
+
+                    b.Property<string>("AyakkabiTipi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -641,10 +561,36 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ColorId")
+                    b.Property<string>("Malzeme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tipi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YakaStili")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductDetailManWomenId");
+
+                    b.ToTable("ProductDetailManWomens");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPc", b =>
+                {
+                    b.Property<int>("ProductDetailPcId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("DahiliUyduAlici")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailPcId"), 1L, 1);
+
+                    b.Property<string>("BellekHizi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CihazAgirligi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -656,63 +602,9 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EkranEbati")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EkranFormati")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EkranYenilemeHizi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GPS")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GurultuOnleme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HdmiGirisleri")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KalpRitmiOlcme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Kamera")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KullanimTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Kurulum")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Malzeme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NumberId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PcBaglantisi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductExplanation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Ram")
                         .IsRequired()
@@ -726,40 +618,26 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SesliGorusme")
+                    b.Property<string>("İslemciNesli")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SizeId")
+                    b.Property<string>("İslemciTipi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductDetailPcId");
+
+                    b.ToTable("ProductDetailPcs");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPhone", b =>
+                {
+                    b.Property<int>("ProductDetailPhoneId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("SuGecirme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuyaTereDayanikli")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UykuTakibi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UyumluMarka")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Wifi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("YakaStili")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailPhoneId"), 1L, 1);
 
                     b.Property<string>("bluetooth")
                         .IsRequired()
@@ -789,19 +667,66 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("İslemciNesli")
+                    b.HasKey("ProductDetailPhoneId");
+
+                    b.ToTable("ProductDetailPhones");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetails", b =>
+                {
+                    b.Property<int>("ProductDetailsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailsId"), 1L, 1);
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HeadPhoneId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ManWomenId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NumberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PcId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PhoneId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductExplanation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("İslemciTipi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TvId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WacthId")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductDetailsId");
 
                     b.HasIndex("ColorId");
 
+                    b.HasIndex("HeadPhoneId");
+
+                    b.HasIndex("ManWomenId");
+
                     b.HasIndex("NumberId");
+
+                    b.HasIndex("PcId");
+
+                    b.HasIndex("PhoneId");
 
                     b.HasIndex("ProductId")
                         .IsUnique()
@@ -809,59 +734,103 @@ namespace Repositories.Migrations
 
                     b.HasIndex("SizeId");
 
+                    b.HasIndex("TvId");
+
+                    b.HasIndex("WacthId");
+
                     b.ToTable("ProductDetails");
 
                     b.HasData(
                         new
                         {
                             ProductDetailsId = 1,
-                            AdımSayar = "",
-                            AyakkabiTipi = "",
-                            BellekHizi = "",
-                            BluetoothVersiyon = "",
-                            CiftTelefonDestegi = "",
-                            CihazAgirligi = "",
-                            Cinsiyet = "",
-                            ColorId = 1,
-                            DahiliUyduAlici = "",
-                            EkranBoyutu = "",
-                            EkranCozunurlugu = "",
-                            EkranEbati = "",
-                            EkranFormati = "",
-                            EkranYenilemeHizi = "",
-                            GPS = "",
-                            GurultuOnleme = "",
-                            HdmiGirisleri = "",
-                            KalpRitmiOlcme = "",
-                            Kamera = "",
-                            KullanimTipi = "",
-                            Kurulum = "",
-                            Malzeme = "",
-                            NumberId = 1,
-                            PcBaglantisi = "",
-                            ProductExplanation = "ddd",
-                            Ram = "",
-                            RamTipi = "",
-                            SDDKapasite = "",
-                            SesliGorusme = "",
-                            SizeId = 1,
-                            SuGecirme = "",
-                            SuyaTereDayanikli = "",
-                            Tipi = "",
-                            UykuTakibi = "",
-                            UyumluMarka = "",
-                            Wifi = "",
-                            YakaStili = "",
-                            bluetooth = "",
-                            cifthat = "",
-                            dahilihafiza = "",
-                            kameracözünürlügü = "",
-                            parmakizi = "",
-                            pilgücü = "",
-                            yüztanıma = "",
-                            İslemciNesli = "",
-                            İslemciTipi = ""
+                            ProductExplanation = "ddd"
                         });
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailTv", b =>
+                {
+                    b.Property<int>("ProductDetailTvId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailTvId"), 1L, 1);
+
+                    b.Property<string>("DahiliUyduAlici")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EkranEbati")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EkranFormati")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HdmiGirisleri")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kurulum")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PcBaglantisi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Wifi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductDetailTvId");
+
+                    b.ToTable("ProductDetailTvs");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailWatch", b =>
+                {
+                    b.Property<int>("ProductDetailWatchId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailWatchId"), 1L, 1);
+
+                    b.Property<string>("AdımSayar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GPS")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KalpRitmiOlcme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kamera")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SesliGorusme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuGecirme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UykuTakibi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UyumluMarka")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductDetailWatchId");
+
+                    b.ToTable("ProductDetailWatches");
                 });
 
             modelBuilder.Entity("Entities.Models.Size", b =>
@@ -1020,15 +989,15 @@ namespace Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "65120875-4e9d-4130-b8d3-ab98893d95d6",
-                            ConcurrencyStamp = "6c6d14cf-5775-42e4-b65f-ef11279aa8c8",
+                            Id = "20b98993-a6eb-492f-a034-f38c9de769d9",
+                            ConcurrencyStamp = "86bb6303-3376-4480-8f93-9b09335cd467",
                             Name = "MANAGER",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "0efea45c-0cdc-424f-b337-985e7ef708ac",
-                            ConcurrencyStamp = "f93d81a6-1ba6-4cc5-b5c2-00c1b5fa3fa1",
+                            Id = "4266f5f2-ab76-49ce-a557-0efe9efd69c4",
+                            ConcurrencyStamp = "ee0feac7-39fe-4e42-832a-f11eb90f8b31",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -1149,16 +1118,6 @@ namespace Repositories.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Entities.Models.PcDetails", b =>
-                {
-                    b.HasOne("Entities.Models.Product", "Product")
-                        .WithOne("PcDetails")
-                        .HasForeignKey("Entities.Models.PcDetails", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Entities.Models.Product", b =>
                 {
                     b.HasOne("Entities.Models.Category", "Category")
@@ -1191,9 +1150,29 @@ namespace Repositories.Migrations
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("Entities.Models.ProductDetailHeadPhone", "ProductDetailHeadPhone")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("HeadPhoneId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Entities.Models.ProductDetailManWomen", "ProductDetailManWomen")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("ManWomenId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Entities.Models.Number", "Number")
                         .WithMany("ProductDetails")
                         .HasForeignKey("NumberId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Entities.Models.ProductDetailPc", "ProductDetailPc")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("PcId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Entities.Models.ProductDetailPhone", "ProductDetailPhone")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("PhoneId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Entities.Models.Product", "Product")
@@ -1206,11 +1185,33 @@ namespace Repositories.Migrations
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("Entities.Models.ProductDetailTv", "ProductDetailTv")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("TvId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Entities.Models.ProductDetailWatch", "ProductDetailWatch")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("WacthId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.Navigation("Color");
 
                     b.Navigation("Number");
 
                     b.Navigation("Product");
+
+                    b.Navigation("ProductDetailHeadPhone");
+
+                    b.Navigation("ProductDetailManWomen");
+
+                    b.Navigation("ProductDetailPc");
+
+                    b.Navigation("ProductDetailPhone");
+
+                    b.Navigation("ProductDetailTv");
+
+                    b.Navigation("ProductDetailWatch");
 
                     b.Navigation("Size");
                 });
@@ -1297,8 +1298,36 @@ namespace Repositories.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("PcDetails");
+                    b.Navigation("ProductDetails");
+                });
 
+            modelBuilder.Entity("Entities.Models.ProductDetailHeadPhone", b =>
+                {
+                    b.Navigation("ProductDetails");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailManWomen", b =>
+                {
+                    b.Navigation("ProductDetails");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPc", b =>
+                {
+                    b.Navigation("ProductDetails");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPhone", b =>
+                {
+                    b.Navigation("ProductDetails");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailTv", b =>
+                {
+                    b.Navigation("ProductDetails");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailWatch", b =>
+                {
                     b.Navigation("ProductDetails");
                 });
 

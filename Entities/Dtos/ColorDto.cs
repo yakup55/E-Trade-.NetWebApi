@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class ColorDto
+    public record ColorDto
     {
-        public string? ColorName { get; set; }
+        public string ColorName { get; set; }
         public int ProductDetailId { get; set; }
     }
 }

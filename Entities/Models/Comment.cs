@@ -23,7 +23,6 @@ namespace Entities.Models
         [MaxLength(100)]
         public string? Message { get; set; }
 
-        [Required]
         public bool CommentStatus { get; set; }
 
         public int? ProductId { get; set; }

@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Dtos;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services.Service;
 using System;
@@ -25,6 +26,12 @@ namespace ETrade.Presentation.Controllers
         {
            return Ok( service.GetOneProductDetails(productId));
            
+        }
+        [HttpPost]
+        public IActionResult ProductDetailAdd([FromBody] ProductDetailDto product)
+        {
+            service.DetailAdd(product);
+            return Ok(product);
         }
     }
 }

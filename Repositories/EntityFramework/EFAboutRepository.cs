@@ -17,7 +17,8 @@ namespace Repositories.EntityFramework
 
         public List<About> GetLastAbout()
         {
-            return context.Abouts.OrderByDescending(x => x.AboutId).Take(4).ToList();
+            return context.Abouts.OrderByDescending(x => x.AboutId).Take(3).ToList();
         }
-    }
+}
+  
 }

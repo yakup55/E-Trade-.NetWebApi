@@ -33,7 +33,7 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
-            service.GetOneProductDetails(colorDto.ProductDetailId);
+            //service.GetOneProductDetails(colorDto.ProductDetailId);
             var color=mapper.Map<Color>(colorDto);
             repository.Add(color);
             return color;

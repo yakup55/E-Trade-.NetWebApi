@@ -53,14 +53,36 @@ namespace E_Trade.Extensions
             services.AddScoped<ISizeService, SizeManager>();
             services.AddScoped<ISizeRepository, EFSizeRepository>();
             //GENDER
-            services.AddScoped<IGenderRepository,EFGenderRepository>();
-            services.AddScoped<IGenderService,GenderManager>();
+            services.AddScoped<IGenderRepository, EFGenderRepository>();
+            services.AddScoped<IGenderService, GenderManager>();
             //COMMENT
             services.AddScoped<ICommentRepository, EFCommentRepository>();
             services.AddScoped<ICommentService, CommentManager>();
             //NUMBER SHOES
             services.AddScoped<INumberRepository, EFNumberRepository>();
             services.AddScoped<INumberService, NumberManager>();
+            //CONTACT
+            services.AddScoped<IContactService, ContactManager>();
+            services.AddScoped<IContactRepository,EFContactRepository>();
+            //PC DETAİL
+            services.AddScoped<IPcDetailService, PcDetailManager>();
+            services.AddScoped<IPcDetailRepository, EFPcDetailRepository>();
+            //WACTH DETAİL
+            services.AddScoped<IWatchDetailService, WacthDetailManager>();
+            services.AddScoped<IWacthDetailRepository, EFWacthDetailRepository>();
+            //Tv DETAİL
+            services.AddScoped<ITvDetailService, TvDetailManager>();
+            services.AddScoped<ITvDetailRepository, EFTvDetailRepository>();
+            //HeadPhone DETAİL
+            services.AddScoped<IHeadPhoneDetailService, HeadPhonDetailManager>();
+            services.AddScoped<IHeadPhoneDetailRepository, EFHeadPhoneDetailRepository>();
+            //ManWomen DETAİL
+            services.AddScoped<IManWomenDetailService, ManWomenDetailManager>();
+            services.AddScoped<IManWomenDetailRepository, EFManWomenDetailRepository>();
+            //Phone DETAİL
+            services.AddScoped<IPhoneDetailService, PhoneDetailManager>();
+            services.AddScoped<IPhoneDetailRepository, EFPhoneDetailRepository>();
+           
 
             //AUTHENTİCATİON
             //services.AddScoped<IAuthenticationService, AuthenticationManager>();

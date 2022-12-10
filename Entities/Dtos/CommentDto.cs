@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class CommentDto
+    public record CommentDto
     {
         public string CommentName { get; set; }
         public string Message { get; set; }

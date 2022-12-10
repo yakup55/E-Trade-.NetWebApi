@@ -16,6 +16,13 @@ namespace E_Trade.Profiles
             CreateMap<UserDtoRegistraction,User>().ReverseMap();
             CreateMap<CommentDto,Comment>().ReverseMap();
             CreateMap<NumberDto,Number>().ReverseMap();
+            CreateMap<ProductDetailDto, ProductDetails>().ReverseMap();
+            CreateMap<PcDetailDto, ProductDetailPc>().ReverseMap();
+            CreateMap<WacthDetailDto, ProductDetailWatch>().ReverseMap();
+            CreateMap<TvDetailDto, ProductDetailTv>().ReverseMap();
+            CreateMap<ManWomenDetailDto, ProductDetailManWomen>().ReverseMap();
+            CreateMap<PhoneDetailDto, ProductDetailPhone>().ReverseMap();
+            CreateMap<HeadPhoneDetailDto, ProductDetailHeadPhone>().ReverseMap();
         }
     }
 }

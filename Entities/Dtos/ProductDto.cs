@@ -13,5 +13,8 @@ namespace Entities.Dtos
         public int ProductPrice { get; set; }
         public bool ProductStatus { get; set; }
         public int CategoryId { get; set; }
+
+
+      
     }
 }

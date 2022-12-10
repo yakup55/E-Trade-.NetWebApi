@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static Entities.Exceptions.NotFoundException;
 
 namespace ETrade.Presentation.Controllers
 {
@@ -26,21 +27,32 @@ namespace ETrade.Presentation.Controllers
         [HttpGet("getlastproduct")]
         public IActionResult GetLastProduct()
         {
-            
-            return Ok(service.GetLastProduct().Where(x=>x.ProductStatus==true).ToList());
+
+            return Ok(service.GetLastProduct().Where(x => x.ProductStatus == true).ToList());
         }
         [HttpGet]
         public IActionResult GetProductList()
         {
-            return Ok(service.GetProductList().Where(x=>x.ProductStatus==true).ToList());
+            return Ok(service.GetProductList().Where(x => x.ProductStatus == true).ToList());
+        }
+        [HttpGet("getlistbystring")]
+        public IActionResult GetListByString(string product)
+        {
+            if (!string.IsNullOrEmpty(product))
+            {
+                return Ok(service.GetListByString(product));
+            }
+            return null;
+            
         }
         [HttpPost]
         public IActionResult AddProduct([FromBody] ProductDto product)
         {
-            
+            product.ProductStatus = true;
             service.AddProduct(product);
             return Ok(product);
         }
+       
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {
@@ -50,36 +62,37 @@ namespace ETrade.Presentation.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateProduct([FromBody] Product product, [FromRoute] int id)
         {
+            product.ProductStatus = true;
             return Accepted(service.UpdateProduct(product, id));
         }
         [HttpGet("{id}")]
-        public IActionResult GetOneProduct([FromRoute(Name = "id")]int id )
+        public IActionResult GetOneProduct([FromRoute(Name = "id")] int id)
         {
-            var one =service.GetOneProduct(id);
+            var one = service.GetOneProduct(id);
             return Ok(one);
         }
         [HttpGet("getallproductwithdetaillist")]
         public IActionResult GetAllProductWithDetailList()
         {
-            return Ok(service.GetAllProductWithDetailList().Where(x=>x.CategoryId==1).ToList());
+            return Ok(service.GetAllProductWithDetailList().Where(x => x.CategoryId == 1).ToList());
         }
         [HttpGet("getoneproductwithdetail/{id:int}")]
-        public IActionResult GetOneProductWithDetail([FromRoute(Name ="id")]int id)
+        public IActionResult GetOneProductWithDetail([FromRoute(Name = "id")] int id)
         {
             return Ok(service.GetOneProductWithDetail(id));
         }
         [HttpGet("productcategory/{id:int}")]
-        public IActionResult ProductCategory([FromRoute(Name ="id")]int id)
+        public IActionResult ProductCategory([FromRoute(Name = "id")] int id)
         {
-            return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus==true));
+            return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus == true));
         }
         [HttpGet("popularproduct")]
         public IActionResult PopularProduct()
         {
-            return Ok(service.GetProductList().Where(x => x.ProductId ==18 || x.ProductId==15 || x.ProductId == 12 || x.ProductId == 21 || x.ProductId == 22 || x.ProductId == 30 &&x.ProductStatus==true).ToList());
+            return Ok(service.PopularProductList());
         }
         [HttpGet("productactive/{id:int}")]
-       public IActionResult ProductActive([FromRoute(Name ="id")]int id)
+        public IActionResult ProductActive([FromRoute(Name = "id")] int id)
         {
             var status = service.GetOneProduct(id);
             status.ProductStatus = true;

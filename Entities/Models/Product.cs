@@ -15,7 +15,7 @@ namespace Entities.Models
 
         }
 
-        public Product(int productId, string? productName, string? productImage, int productPrice, DateTime productDate, bool productStatus, int? categoryId, Category? category, ICollection<ProductComment>? productComments, ProductDetails? productDetails, PcDetails? pcDetails)
+        public Product(int productId, string? productName, string? productImage, int productPrice, DateTime productDate, bool productStatus, int? categoryId, Category? category, ICollection<ProductComment>? productComments, ProductDetails? productDetails)
         {
             ProductId = productId;
             ProductName = productName;
@@ -47,7 +47,7 @@ namespace Entities.Models
         public ICollection<Comment>? Comments { get; set; }
 
         public ProductDetails? ProductDetails { get; set; }
-        public PcDetails? PcDetails { get; set; }
+        
 
         public override string ToString()
         {

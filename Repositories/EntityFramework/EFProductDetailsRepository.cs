@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using Entities.Dtos;
+using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Concrete.Context;
 using Repositories.Contracts;
 using System;
@@ -13,6 +15,9 @@ namespace Repositories.EntityFramework
     {
         public EFProductDetailsRepository(AppDbContext context) : base(context)
         {
+
         }
+
+       
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class NumberDto
+    public record NumberDto
     {
         public int ShoesNumber { get; set; }
         public int ProductDetailId { get; set; }

@@ -32,7 +32,7 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
-           service.GetOneProductDetails(sizeDto.ProductDetailId);
+           //service.GetOneProductDetails(sizeDto.ProductDetailId);
             var size = mapper.Map<Size>(sizeDto);
             repository.Add(size);
             return size;

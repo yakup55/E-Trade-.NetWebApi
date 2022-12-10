@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class UserDtoAuthentication
+    public record UserDtoAuthentication
     {
         [Required(ErrorMessage ="User Name is required")]
         public string? UserName { get; init; }

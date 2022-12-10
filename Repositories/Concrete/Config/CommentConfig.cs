@@ -18,7 +18,6 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.Message).IsRequired();
             builder.Property(x => x.CommentSubject).IsRequired();
             builder.Property(x => x.CommentStatus).IsRequired();
-
             builder.HasData(
                 new Comment { CommentId = 1, CommentName = "Test", Message = "ehddhdhscb",CommentSubject="",CommentStatus=true },
                 new Comment { CommentId = 2, CommentName = "Test", Message = "ehddhdhscb", CommentSubject = "", CommentStatus = true },

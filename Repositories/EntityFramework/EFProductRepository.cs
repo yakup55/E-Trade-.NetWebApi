@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Repositories.EntityFramework
 {
@@ -28,13 +29,21 @@ namespace Repositories.EntityFramework
         }
         public Product GetOneProductWithDetail(int id)
         {
-            return context.Products.Include(x => x.ProductDetails).Include(x => x.Category).ToList().Where(x => x.ProductId == id).SingleOrDefault();
+            return context.Products
+                .Include(x => x.ProductDetails.ProductDetailPc)
+                .Include(x => x.ProductDetails.ProductDetailHeadPhone)
+                .Include(x => x.ProductDetails.ProductDetailPhone)
+                .Include(x => x.ProductDetails.ProductDetailTv)
+                .Include(x => x.ProductDetails.ProductDetailWatch)
+                .Include(x => x.ProductDetails.ProductDetailManWomen)
+                .Include(x => x.Category).ToList().Where(x => x.ProductId == id).SingleOrDefault();
         }
 
 
-        public List<Product> PopularsProduct(Expression<Func<Product, bool>> filter = null)
+      
+        public List<Product> PopularProductList()
         {
-            return context.Products.Where(filter).ToList();
+            return context.Products.Where(x => x.ProductId == 41 || x.ProductId == 35 || x.ProductId == 33 || x.ProductId == 27 || x.ProductId == 15 || x.ProductId == 5 && x.ProductStatus == true).ToList();
         }
     }
 }

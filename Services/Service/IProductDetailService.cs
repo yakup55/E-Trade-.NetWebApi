@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Dtos;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Services.Service
     {
         List<ProductDetails> GetProductDetailsList(Expression<Func<ProductDetails, bool>> filter = null);
         ProductDetails GetOneProductDetails(int productId);
+        ProductDetails DetailAdd(ProductDetailDto product);
     }
 }

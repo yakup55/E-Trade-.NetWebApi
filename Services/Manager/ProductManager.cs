@@ -18,12 +18,14 @@ namespace Services.Manager
     {
         private readonly IProductRepository productRepository;
         private readonly ICategoryService categoryService;
+        private readonly IProductDetailService productDetailService;
         private readonly IMapper mapper;
 
-        public ProductManager(IProductRepository productRepository, ICategoryService categoryService, IMapper mapper)
+        public ProductManager(IProductRepository productRepository, ICategoryService categoryService, IProductDetailService productDetailService, IMapper mapper)
         {
             this.productRepository = productRepository;
             this.categoryService = categoryService;
+            this.productDetailService = productDetailService;
             this.mapper = mapper;
         }
 
@@ -55,6 +57,16 @@ namespace Services.Manager
         {
             return productRepository.GetLastProduct();
         }
+
+        public List<Product> GetListByString(string name)
+        {
+            if (name is null)
+            {
+                throw new ArgumentNullException();
+            }
+            return productRepository.GetList(x => x.ProductName.Contains(name) || x.Category.CategoryName.Contains(name) ||x.ProductDetails.Color.ColorName.Contains(name)||x.ProductDetails.Size.SizeName.Contains(name));
+        }
+
         public Product GetOneProduct(int id)
         {
             var product = productRepository.GetOne(x => x.ProductId == id);
@@ -79,10 +91,12 @@ namespace Services.Manager
             return productRepository.GetList(filter).OrderByDescending(x=>x.ProductId).ToList();
         }
 
-        public List<Product> PopularsProduct(Expression<Func<Product, bool>> filter = null)
+        public List<Product> PopularProductList()
         {
-            return productRepository.GetList(filter);
+           return productRepository.PopularProductList();
         }
+
+       
         public Product UpdateProduct(Product product, int id)
         {
             var update = GetOneProduct(id);

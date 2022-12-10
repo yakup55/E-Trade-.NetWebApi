@@ -23,6 +23,13 @@ namespace Repositories.Concrete.Context
         public DbSet<ProductDetails>? ProductDetails { get; set; }
         public DbSet<ProductComment>? ProductComments { get; set; }
         public DbSet<Number>? Numbers { get; set; }
+        public DbSet<Contact>? Contacts { get; set; }
+        public DbSet<ProductDetailWatch>? ProductDetailWatches { get; set; }
+        public DbSet<ProductDetailTv>? ProductDetailTvs { get; set; }
+        public DbSet<ProductDetailPhone>? ProductDetailPhones { get; set; }
+        public DbSet<ProductDetailPc>? ProductDetailPcs { get; set; }
+        public DbSet<ProductDetailManWomen>? ProductDetailManWomens { get; set; }
+        public DbSet<ProductDetailHeadPhone>? ProductDetailHeadPhones { get; set; }
 
         public AppDbContext(DbContextOptions <AppDbContext> options) : base(options)
         {

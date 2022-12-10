@@ -15,7 +15,7 @@ namespace Repositories.Concrete.Config
         {
             builder.HasKey(x => x.ColorId);
             builder.Property(x => x.ColorName).IsRequired();
-          
+
             builder.HasData(
                 new Color { ColorId = 1, ColorName = "Mavi" },
                 new Color { ColorId = 2, ColorName = "Sarı" },
