@@ -16,13 +16,19 @@ namespace Services.Manager
     {
         private readonly IProductDetailRepository repository;
         private readonly IProductService service;
+        private readonly IPcDetailService pc;
+        private readonly IHeadPhoneDetailService headPhone;
+        private readonly IPhoneDetailService phone;
+        private readonly IWatchDetailService watch;
+        private readonly ITvDetailService tv;
+        private readonly IManWomenDetailService manWomen;
         private readonly IMapper mapper;
-
-
+      
         public ProductDetailManager()
         {
 
         }
+
         public ProductDetailManager(IProductDetailRepository repository, IProductService service, IMapper mapper)
         {
             this.repository = repository;
@@ -36,16 +42,25 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
-           service.GetOneProduct(product.ProductId);
-           
-            var dto=mapper.Map<ProductDetails>(product);
+       
+            service.GetOneProduct(product.ProductId);
+
+            pc.GetOnePc(product.PcId);
+            headPhone.GetOneHeadPhone(product.HeadPhoneId);
+            phone.GetOnePhone(product.PhoneId);
+            watch.GetOneWacth(product.WacthId);
+            manWomen.GetOneManWomen(product.ManWomenId);
+            tv.GetOneTv(product.TvId);
+
+            var dto = mapper.Map<ProductDetails>(product);
             repository.Add(dto);
             return dto;
         }
 
         public ProductDetails GetOneProductDetails(int productId)
         {
-            throw new NotImplementedException();
+           var one=repository.GetOne(x=> x.ProductId == productId);
+            return one;
         }
 
         public List<ProductDetails> GetProductDetailsList(Expression<Func<ProductDetails, bool>> filter = null)

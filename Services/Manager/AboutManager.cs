@@ -19,7 +19,7 @@ namespace Services.Manager
         {
             this.aboutRepository = aboutRepository;
         }
-
+      
         public About AddAbout(About about)
         {
             if (about is null)

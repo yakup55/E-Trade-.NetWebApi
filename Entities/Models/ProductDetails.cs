@@ -14,35 +14,26 @@ namespace Entities.Models
         public int ProductDetailsId { get; set; }
         [Required]
         public string? ProductExplanation { get; set; }
-       
-
-        public int? SizeId { get; set; }
-        public Size? Size { get; set; }
-
-        public int? ColorId { get; set; }
-        public Color? Color { get; set; }
-
-        public int? NumberId { get; set; }
-        public Number? Number { get; set; }
 
         public int? TvId { get; set; }
-        public ProductDetailTv? ProductDetailTv { get; set; }
+        public ProductDetailTv? Tv { get; set; }
 
         public int? WacthId { get; set; }
-        public ProductDetailWatch? ProductDetailWatch { get; set; }
+        public ProductDetailWatch? Watch { get; set; }
 
         public int? PhoneId { get; set; }
-        public ProductDetailPhone? ProductDetailPhone { get; set; }
+        public ProductDetailPhone? Phone { get; set; }
 
         public int? PcId { get; set; }
-        public  ProductDetailPc? ProductDetailPc { get; set; }
+        public  ProductDetailPc? Pc { get; set; }
 
         public int? ManWomenId { get; set; }
-        public ProductDetailManWomen? ProductDetailManWomen { get; set; }
+        public ProductDetailManWomen? ManWomen { get; set; }
 
         public int? HeadPhoneId { get; set; }
-        public ProductDetailHeadPhone? ProductDetailHeadPhone { get; set; }
+        public ProductDetailHeadPhone? HeadPhone { get; set; }
 
+        [Required]
         public int? ProductId { get; set; }
         public Product? Product { get; set; }
 

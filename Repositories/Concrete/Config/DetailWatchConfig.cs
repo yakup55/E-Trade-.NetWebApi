@@ -13,7 +13,7 @@ namespace Repositories.Concrete.Config
     {
         public void Configure(EntityTypeBuilder<ProductDetailWatch> builder)
         {
-            builder.HasKey(x => x.ProductDetailWatchId);
+            builder.HasKey(x => x.WatchId);
             builder.Property(x => x.AdımSayar).IsRequired();
             builder.Property(x => x.GPS).IsRequired();
             builder.Property(x => x.KalpRitmiOlcme).IsRequired();
@@ -24,6 +24,9 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.UyumluMarka).IsRequired();
 
 
+            builder.HasOne(x => x.Color).WithMany(x => x.ProductDetailWatches).HasForeignKey(x => x.ColorId)
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Brand).WithMany(x => x.ProductDetailWatches).HasForeignKey(x => x.BrandId).OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

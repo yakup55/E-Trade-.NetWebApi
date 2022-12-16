@@ -13,13 +13,17 @@ namespace Repositories.Concrete.Config
     {
         public void Configure(EntityTypeBuilder<ProductDetailTv> builder)
         {
-            builder.HasKey(x => x.ProductDetailTvId);
+            builder.HasKey(x => x.TvId);
             builder.Property(x => x.DahiliUyduAlici).IsRequired();
             builder.Property(x => x.EkranEbati).IsRequired();
             builder.Property(x => x.EkranFormati).IsRequired();
             builder.Property(x => x.Wifi).IsRequired();
             builder.Property(x => x.Kurulum).IsRequired();
             builder.Property(x => x.PcBaglantisi).IsRequired();
+  
+           
+
+           builder.HasOne(x => x.Brand).WithMany(x => x.ProductDetailTvs).HasForeignKey(x => x.BrandId).OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

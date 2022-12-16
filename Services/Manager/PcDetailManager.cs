@@ -17,16 +17,25 @@ namespace Services.Manager
     {
         private readonly IPcDetailRepository repository;
         private readonly IMapper mapper;
+        private readonly IBrandService brand;
+        private readonly IColorService color;
 
-        public PcDetailManager(IPcDetailRepository repository, IMapper mapper)
+        public PcDetailManager()
+        {
+
+        }
+
+        public PcDetailManager(IPcDetailRepository repository, IMapper mapper, IBrandService brand, IColorService color)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.brand = brand;
+            this.color = color;
         }
 
         public ProductDetailPc GetOnePc(int id)
         {
-            var one = repository.GetOne(x => x.ProductDetailPcId == id);
+            var one = repository.GetOne(x => x.PcId == id);
             if (one is null)
             {
                 throw new PcDetailNotFoundException(id);
@@ -45,6 +54,8 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
+            brand.GetBrandOneById(detailPc.BrandId);
+            color.GetOneByColor(detailPc.ColorId);
             var dto = mapper.Map<ProductDetailPc>(detailPc);
             repository.Add(dto);
             return dto;
@@ -62,7 +73,7 @@ namespace Services.Manager
 
         public ProductDetailPc PcUpdate(int id, ProductDetailPc detailPc)
         {
-            if (detailPc.ProductDetailPcId != id)
+            if (detailPc.PcId != id)
             {
                 throw new PcDetailNotFoundException(id);
             }
@@ -77,6 +88,11 @@ namespace Services.Manager
             update.EkranBoyutu = detailPc.EkranBoyutu;
             update.EkranCozunurlugu = detailPc.EkranCozunurlugu;
             update.EkranYenilemeHizi = detailPc.EkranYenilemeHizi;
+            update.ColorId= detailPc.ColorId;
+            update.BrandId= detailPc.BrandId;
+            update.Image1 = detailPc.Image1;
+            update.Image2 = detailPc.Image2;
+            update.Image3 = detailPc.Image3;
             repository.Update(update);
             return update;
         }

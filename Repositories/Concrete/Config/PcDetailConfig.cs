@@ -13,7 +13,7 @@ namespace Repositories.Concrete.Config
     {
         public void Configure(EntityTypeBuilder<ProductDetailPc> builder)
         {
-            builder.HasKey(x => x.ProductDetailPcId);
+            builder.HasKey(x => x.PcId);
             builder.Property(x => x.SDDKapasite).IsRequired();
             builder.Property(x => x.İslemciTipi).IsRequired();
             builder.Property(x => x.İslemciNesli).IsRequired();
@@ -24,6 +24,10 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.EkranBoyutu).IsRequired();
             builder.Property(x => x.BellekHizi).IsRequired();
             builder.Property(x => x.CihazAgirligi).IsRequired();
-    }
+
+
+            builder.HasOne(x => x.Color).WithMany(x => x.ProductDetailPcs).HasForeignKey(x => x.ColorId).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Brand).WithMany(x => x.ProductDetailPcs).HasForeignKey(x => x.BrandId).OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

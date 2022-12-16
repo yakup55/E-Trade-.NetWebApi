@@ -18,7 +18,11 @@ namespace Services.Manager
         private readonly INumberRepository repository;
         private readonly IProductDetailService service;
        private readonly IMapper mapper;
+        public NumberManager()
+        {
 
+        }
+       
         public NumberManager(INumberRepository repository, IProductDetailService service, IMapper mapper)
         {
             this.repository = repository;

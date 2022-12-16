@@ -7,5 +7,11 @@
         public string CiftTelefonDestegi { get; set; }
         public string KullanimTipi { get; set; }
         public string SuyaTereDayanikli { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+
+        public int ColorId { get; set; }
+        public int BrandId { get; set; }
     }
 }

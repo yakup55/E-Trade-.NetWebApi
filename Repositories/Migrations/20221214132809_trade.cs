@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repositories.Migrations
 {
-    public partial class etrade : Migration
+    public partial class trade : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,20 @@ namespace Repositories.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Brands",
+                columns: table => new
+                {
+                    BrandId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BrandName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BrandImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brands", x => x.BrandId);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,120 +122,6 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductDetailHeadPhones",
-                columns: table => new
-                {
-                    HeadPhoneId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GurultuOnleme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BluetoothVersiyon = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CiftTelefonDestegi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KullanimTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuyaTereDayanikli = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailHeadPhones", x => x.HeadPhoneId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetailManWomens",
-                columns: table => new
-                {
-                    ProductDetailManWomenId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AyakkabiTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Malzeme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cinsiyet = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YakaStili = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tipi = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailManWomens", x => x.ProductDetailManWomenId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetailPcs",
-                columns: table => new
-                {
-                    ProductDetailPcId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SDDKapasite = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RamTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Ram = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EkranCozunurlugu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    İslemciNesli = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    İslemciTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EkranYenilemeHizi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EkranBoyutu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BellekHizi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CihazAgirligi = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailPcs", x => x.ProductDetailPcId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetailPhones",
-                columns: table => new
-                {
-                    ProductDetailPhoneId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    bluetooth = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    cifthat = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    dahilihafiza = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    kameracözünürlügü = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    pilgücü = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    yüztanıma = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    parmakizi = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailPhones", x => x.ProductDetailPhoneId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetailTvs",
-                columns: table => new
-                {
-                    ProductDetailTvId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DahiliUyduAlici = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EkranEbati = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EkranFormati = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Wifi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Kurulum = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PcBaglantisi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HdmiGirisleri = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailTvs", x => x.ProductDetailTvId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetailWatches",
-                columns: table => new
-                {
-                    ProductDetailWatchId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AdımSayar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GPS = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KalpRitmiOlcme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Kamera = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SesliGorusme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuGecirme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UykuTakibi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UyumluMarka = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetailWatches", x => x.ProductDetailWatchId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Sizes",
                 columns: table => new
                 {
@@ -256,6 +156,35 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductDetailTvs",
+                columns: table => new
+                {
+                    TvId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DahiliUyduAlici = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkranEbati = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkranFormati = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Wifi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Kurulum = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PcBaglantisi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HdmiGirisleri = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailTvs", x => x.TvId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailTvs_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -277,6 +206,152 @@ namespace Repositories.Migrations
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductDetailHeadPhones",
+                columns: table => new
+                {
+                    HeadPhoneId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GurultuOnleme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BluetoothVersiyon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CiftTelefonDestegi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KullanimTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuyaTereDayanikli = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailHeadPhones", x => x.HeadPhoneId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailHeadPhones_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailHeadPhones_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductDetailPcs",
+                columns: table => new
+                {
+                    PcId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SDDKapasite = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RamTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ram = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkranCozunurlugu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    İslemciNesli = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    İslemciTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkranYenilemeHizi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EkranBoyutu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BellekHizi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CihazAgirligi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailPcs", x => x.PcId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailPcs_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailPcs_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductDetailPhones",
+                columns: table => new
+                {
+                    PhoneId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    bluetooth = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    cifthat = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dahilihafiza = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    kameracözünürlügü = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    pilgücü = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    yüztanıma = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    parmakizi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailPhones", x => x.PhoneId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailPhones_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailPhones_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductDetailWatches",
+                columns: table => new
+                {
+                    WatchId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AdımSayar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GPS = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KalpRitmiOlcme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Kamera = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SesliGorusme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuGecirme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UykuTakibi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UyumluMarka = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailWatches", x => x.WatchId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailWatches_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailWatches_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -313,6 +388,54 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductDetailManWomens",
+                columns: table => new
+                {
+                    ManWomenId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AyakkabiTipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Malzeme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cinsiyet = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YakaStili = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tipi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    SizeId = table.Column<int>(type: "int", nullable: true),
+                    NumberId = table.Column<int>(type: "int", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetailManWomens", x => x.ManWomenId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailManWomens_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailManWomens_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailManWomens_Numbers_NumberId",
+                        column: x => x.NumberId,
+                        principalTable: "Numbers",
+                        principalColumn: "NumberId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetailManWomens_Sizes_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "Sizes",
+                        principalColumn: "SizeId",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -332,89 +455,6 @@ namespace Repositories.Migrations
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetails",
-                columns: table => new
-                {
-                    ProductDetailsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductExplanation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SizeId = table.Column<int>(type: "int", nullable: true),
-                    ColorId = table.Column<int>(type: "int", nullable: true),
-                    NumberId = table.Column<int>(type: "int", nullable: true),
-                    TvId = table.Column<int>(type: "int", nullable: true),
-                    WacthId = table.Column<int>(type: "int", nullable: true),
-                    PhoneId = table.Column<int>(type: "int", nullable: true),
-                    PcId = table.Column<int>(type: "int", nullable: true),
-                    ManWomenId = table.Column<int>(type: "int", nullable: true),
-                    HeadPhoneId = table.Column<int>(type: "int", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetails", x => x.ProductDetailsId);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_Numbers_NumberId",
-                        column: x => x.NumberId,
-                        principalTable: "Numbers",
-                        principalColumn: "NumberId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailHeadPhones_HeadPhoneId",
-                        column: x => x.HeadPhoneId,
-                        principalTable: "ProductDetailHeadPhones",
-                        principalColumn: "HeadPhoneId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailManWomens_ManWomenId",
-                        column: x => x.ManWomenId,
-                        principalTable: "ProductDetailManWomens",
-                        principalColumn: "ProductDetailManWomenId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailPcs_PcId",
-                        column: x => x.PcId,
-                        principalTable: "ProductDetailPcs",
-                        principalColumn: "ProductDetailPcId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailPhones_PhoneId",
-                        column: x => x.PhoneId,
-                        principalTable: "ProductDetailPhones",
-                        principalColumn: "ProductDetailPhoneId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailTvs_TvId",
-                        column: x => x.TvId,
-                        principalTable: "ProductDetailTvs",
-                        principalColumn: "ProductDetailTvId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_ProductDetailWatches_WacthId",
-                        column: x => x.WacthId,
-                        principalTable: "ProductDetailWatches",
-                        principalColumn: "ProductDetailWatchId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_Sizes_SizeId",
-                        column: x => x.SizeId,
-                        principalTable: "Sizes",
-                        principalColumn: "SizeId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -503,6 +543,67 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductDetails",
+                columns: table => new
+                {
+                    ProductDetailsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductExplanation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TvId = table.Column<int>(type: "int", nullable: true),
+                    WacthId = table.Column<int>(type: "int", nullable: true),
+                    PhoneId = table.Column<int>(type: "int", nullable: true),
+                    PcId = table.Column<int>(type: "int", nullable: true),
+                    ManWomenId = table.Column<int>(type: "int", nullable: true),
+                    HeadPhoneId = table.Column<int>(type: "int", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductDetails", x => x.ProductDetailsId);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailHeadPhones_HeadPhoneId",
+                        column: x => x.HeadPhoneId,
+                        principalTable: "ProductDetailHeadPhones",
+                        principalColumn: "HeadPhoneId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailManWomens_ManWomenId",
+                        column: x => x.ManWomenId,
+                        principalTable: "ProductDetailManWomens",
+                        principalColumn: "ManWomenId");
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailPcs_PcId",
+                        column: x => x.PcId,
+                        principalTable: "ProductDetailPcs",
+                        principalColumn: "PcId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailPhones_PhoneId",
+                        column: x => x.PhoneId,
+                        principalTable: "ProductDetailPhones",
+                        principalColumn: "PhoneId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailTvs_TvId",
+                        column: x => x.TvId,
+                        principalTable: "ProductDetailTvs",
+                        principalColumn: "TvId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_ProductDetailWatches_WacthId",
+                        column: x => x.WacthId,
+                        principalTable: "ProductDetailWatches",
+                        principalColumn: "WatchId",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductDetails_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductComments",
                 columns: table => new
                 {
@@ -527,22 +628,12 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Abouts",
-                columns: new[] { "AboutId", "AboutDetails", "AboutImage" },
-                values: new object[,]
-                {
-                    { 1, "testtt", "eeeeeeeeeeeeeeeeee" },
-                    { 2, "testtt", "eeeeeeeeeeeeeeeeee" },
-                    { 3, "testtt", "eeeeeeeeeeeeeeeeee" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "45d5acc0-d874-4860-9a2d-e17c4fe0ec8a", "6f019e35-6408-406b-b673-c869f5a212c7", "Administrator", "ADMINISTRATOR" },
-                    { "ffc0fe3b-dc60-4496-9f09-3f7972190f75", "ac3393ff-3cd9-473e-afe1-a4cb703a36e5", "MANAGER", "MANAGER" }
+                    { "4daab474-4f8d-4f93-b7c5-763096b259d4", "6f574cf7-4b05-4838-9a09-cd63f0685a72", "MANAGER", "MANAGER" },
+                    { "a54c500c-61fc-4322-acc8-49b0cc6db8a6", "0900c1b5-807f-4134-bb32-bde7f6ef3acc", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -618,11 +709,6 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "ProductDetails",
-                columns: new[] { "ProductDetailsId", "ColorId", "HeadPhoneId", "ManWomenId", "NumberId", "PcId", "PhoneId", "ProductExplanation", "ProductId", "SizeId", "TvId", "WacthId" },
-                values: new object[] { 1, null, null, null, null, null, null, "ddd", null, null, null, null });
-
-            migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "CategoryId", "ProductImage", "ProductName", "ProductPrice", "ProductStatus" },
                 values: new object[,]
@@ -640,25 +726,18 @@ namespace Repositories.Migrations
                     { 1, "S" },
                     { 2, "M" },
                     { 3, "L" },
-                    { 4, "XL" },
-                    { 5, "XXL" },
-                    { 6, "XXXL" }
+                    { 4, "XL" }
                 });
 
             migrationBuilder.InsertData(
-                table: "ProductComments",
-                columns: new[] { "ProductCommentId", "CommentId", "ProductId" },
-                values: new object[] { 1, 2, 1 });
+                table: "Sizes",
+                columns: new[] { "SizeId", "SizeName" },
+                values: new object[] { 5, "XXL" });
 
             migrationBuilder.InsertData(
-                table: "ProductComments",
-                columns: new[] { "ProductCommentId", "CommentId", "ProductId" },
-                values: new object[] { 2, 1, 2 });
-
-            migrationBuilder.InsertData(
-                table: "ProductComments",
-                columns: new[] { "ProductCommentId", "CommentId", "ProductId" },
-                values: new object[] { 3, 3, 3 });
+                table: "Sizes",
+                columns: new[] { "SizeId", "SizeName" },
+                values: new object[] { 6, "XXXL" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -720,8 +799,53 @@ namespace Repositories.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductDetails_ColorId",
-                table: "ProductDetails",
+                name: "IX_ProductDetailHeadPhones_BrandId",
+                table: "ProductDetailHeadPhones",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailHeadPhones_ColorId",
+                table: "ProductDetailHeadPhones",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailManWomens_BrandId",
+                table: "ProductDetailManWomens",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailManWomens_ColorId",
+                table: "ProductDetailManWomens",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailManWomens_NumberId",
+                table: "ProductDetailManWomens",
+                column: "NumberId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailManWomens_SizeId",
+                table: "ProductDetailManWomens",
+                column: "SizeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailPcs_BrandId",
+                table: "ProductDetailPcs",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailPcs_ColorId",
+                table: "ProductDetailPcs",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailPhones_BrandId",
+                table: "ProductDetailPhones",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailPhones_ColorId",
+                table: "ProductDetailPhones",
                 column: "ColorId");
 
             migrationBuilder.CreateIndex(
@@ -733,11 +857,6 @@ namespace Repositories.Migrations
                 name: "IX_ProductDetails_ManWomenId",
                 table: "ProductDetails",
                 column: "ManWomenId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductDetails_NumberId",
-                table: "ProductDetails",
-                column: "NumberId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductDetails_PcId",
@@ -753,13 +872,7 @@ namespace Repositories.Migrations
                 name: "IX_ProductDetails_ProductId",
                 table: "ProductDetails",
                 column: "ProductId",
-                unique: true,
-                filter: "[ProductId] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductDetails_SizeId",
-                table: "ProductDetails",
-                column: "SizeId");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductDetails_TvId",
@@ -770,6 +883,21 @@ namespace Repositories.Migrations
                 name: "IX_ProductDetails_WacthId",
                 table: "ProductDetails",
                 column: "WacthId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailTvs_BrandId",
+                table: "ProductDetailTvs",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailWatches_BrandId",
+                table: "ProductDetailWatches",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductDetailWatches_ColorId",
+                table: "ProductDetailWatches",
+                column: "ColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -816,12 +944,6 @@ namespace Repositories.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Colors");
-
-            migrationBuilder.DropTable(
-                name: "Numbers");
-
-            migrationBuilder.DropTable(
                 name: "ProductDetailHeadPhones");
 
             migrationBuilder.DropTable(
@@ -840,13 +962,22 @@ namespace Repositories.Migrations
                 name: "ProductDetailWatches");
 
             migrationBuilder.DropTable(
-                name: "Sizes");
-
-            migrationBuilder.DropTable(
                 name: "Genders");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Numbers");
+
+            migrationBuilder.DropTable(
+                name: "Sizes");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
+
+            migrationBuilder.DropTable(
+                name: "Colors");
 
             migrationBuilder.DropTable(
                 name: "Categories");

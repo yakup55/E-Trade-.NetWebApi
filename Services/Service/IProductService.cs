@@ -22,7 +22,7 @@ namespace Services.Service
         List<Product> GetLastProduct();
         List<Product> PopularProductList();
         Product GetOneProductWithDetail(int id);
-        
+        List<Product> ProductBrand(int id);
 
         List<Product> GetAllProductWithDetailList();
     }

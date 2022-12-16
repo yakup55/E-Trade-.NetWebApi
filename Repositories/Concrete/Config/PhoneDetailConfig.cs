@@ -14,7 +14,7 @@ namespace Repositories.Concrete.Config
     {
         public void Configure(EntityTypeBuilder<ProductDetailPhone> builder)
         {
-            builder.HasKey(x => x.ProductDetailPhoneId);
+            builder.HasKey(x => x.PhoneId);
             builder.Property(x => x.bluetooth).IsRequired();
             builder.Property(x => x.cifthat).IsRequired();
             builder.Property(x => x.dahilihafiza).IsRequired();
@@ -22,6 +22,11 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.pilgücü).IsRequired();
             builder.Property(x => x.yüztanıma).IsRequired();
             builder.Property(x => x.parmakizi).IsRequired();
-    }
+
+
+
+            builder.HasOne(x => x.Color).WithMany(x => x.ProductDetailPhones).HasForeignKey(x => x.ColorId).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Brand).WithMany(x => x.ProductDetailPhones).HasForeignKey(x => x.BrandId).OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

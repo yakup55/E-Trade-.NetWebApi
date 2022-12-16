@@ -15,6 +15,6 @@ namespace Entities.Models
         [Required]
         public int ShoesNumber { get; set; }
 
-        public ICollection<ProductDetails>? ProductDetails { get; set; }
+        public ICollection<ProductDetailManWomen>? ProductDetailManWomens { get; set; }
     }
 }

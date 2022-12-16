@@ -20,8 +20,12 @@ namespace Services.Manager
         private readonly IMapper mapper;
         private readonly UserManager<User> manager;
         private readonly IConfiguration configuration;
+        private User? users;
 
-        private User users;
+        public AuthenticationManager()
+        {
+                
+        }
         public AuthenticationManager(IMapper mapper, UserManager<User> manager, IConfiguration configuration)
         {
             this.mapper = mapper;
@@ -47,9 +51,7 @@ namespace Services.Manager
             var user=mapper.Map<User>(registraction);
             var result=await manager.CreateAsync(user,registraction.UserPassword);
             if (result.Succeeded)
-            {
                 await manager.AddToRolesAsync(user, registraction.Roles);
-            }
             return result;
         }
 

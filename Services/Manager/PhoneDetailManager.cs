@@ -17,18 +17,24 @@ namespace Services.Manager
     {
         private readonly IPhoneDetailRepository repository;
         private readonly IMapper mapper;
+        private readonly IBrandService brand;
+        private readonly IColorService color;
 
-
-
-        public PhoneDetailManager(IPhoneDetailRepository repository, IMapper mapper)
+        public PhoneDetailManager()
+        {
+                
+        }
+        public PhoneDetailManager(IPhoneDetailRepository repository, IMapper mapper, IBrandService brand, IColorService color)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.brand = brand;
+            this.color = color;
         }
 
         public ProductDetailPhone GetOnePhone(int id)
         {
-            var one = repository.GetOne(x=>x.ProductDetailPhoneId== id);
+            var one = repository.GetOne(x=>x.PhoneId == id);
             if (one is null)
             {
                 throw new PhoneDetailNotFoundException(id);
@@ -48,6 +54,8 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
+            brand.GetBrandOneById(detailPhone.BrandId);
+            color.GetOneByColor(detailPhone.ColorId);
             var add = mapper.Map<ProductDetailPhone>(detailPhone);
             repository.Add(add);
             return add;
@@ -77,6 +85,11 @@ namespace Services.Manager
             update.pilgücü = detailPhone.pilgücü;
             update.yüztanıma = detailPhone.yüztanıma;
             update.parmakizi = detailPhone.parmakizi;
+            update.ColorId = detailPhone.ColorId;
+            update.BrandId = detailPhone.BrandId;
+            update.Image1 = detailPhone.Image1;
+            update.Image2 = detailPhone.Image2;
+            update.Image3 = detailPhone.Image3;
             repository.Update(update);
             return update;
          

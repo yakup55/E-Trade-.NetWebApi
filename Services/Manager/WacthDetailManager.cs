@@ -17,16 +17,23 @@ namespace Services.Manager
     {
         private readonly IWacthDetailRepository repository;
         private readonly IMapper mapper;
+        private readonly IBrandService brand;
+        private readonly IColorService color;
+        public WacthDetailManager()
+        {
 
-        public WacthDetailManager(IWacthDetailRepository repository, IMapper mapper)
+        }
+        public WacthDetailManager(IWacthDetailRepository repository, IMapper mapper, IBrandService brand, IColorService color)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.brand = brand;
+            this.color = color;
         }
 
         public ProductDetailWatch GetOneWacth(int id)
         {
-            var one =repository.GetOne(x=>x.ProductDetailWatchId== id); 
+            var one =repository.GetOne(x=>x.WatchId== id); 
             if (one is null)
             {
                 throw new WacthDetailNotFoundException(id);
@@ -45,6 +52,8 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
+            brand.GetBrandOneById(detailWatch.BrandId);
+            color.GetOneByColor(detailWatch.ColorId);
             var add=mapper.Map<ProductDetailWatch>(detailWatch);
             repository.Add(add);
             return add;
@@ -71,6 +80,11 @@ namespace Services.Manager
             update.SuGecirme = detailWatch.SuGecirme;
             update.UykuTakibi = detailWatch.UykuTakibi;
             update.UyumluMarka = detailWatch.UyumluMarka;
+            update.ColorId= detailWatch.ColorId;
+            update.BrandId= detailWatch.BrandId;
+            update.Image1 = detailWatch.Image1;
+            update.Image2 = detailWatch.Image2;
+            update.Image3 = detailWatch.Image3;
             repository.Update(update);
             return update;
         }

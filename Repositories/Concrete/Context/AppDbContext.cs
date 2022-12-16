@@ -30,6 +30,7 @@ namespace Repositories.Concrete.Context
         public DbSet<ProductDetailPc>? ProductDetailPcs { get; set; }
         public DbSet<ProductDetailManWomen>? ProductDetailManWomens { get; set; }
         public DbSet<ProductDetailHeadPhone>? ProductDetailHeadPhones { get; set; }
+        public DbSet<Brand>? Brands { get; set; }
 
         public AppDbContext(DbContextOptions <AppDbContext> options) : base(options)
         {
@@ -41,7 +42,7 @@ namespace Repositories.Concrete.Context
        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=ETrade;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=E-Trade;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

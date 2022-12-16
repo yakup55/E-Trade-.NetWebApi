@@ -23,7 +23,7 @@ namespace ETrade.Presentation.Controllers
         [HttpGet]
         public IActionResult GetAboutList()
         {
-            return Ok( service.GetAboutList());
+            return Ok(service.GetAboutList());
         }
         [HttpGet("getlastabout")]
         public IActionResult GetLastAbout()

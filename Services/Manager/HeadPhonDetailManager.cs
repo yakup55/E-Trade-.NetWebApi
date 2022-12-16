@@ -17,11 +17,19 @@ namespace Services.Manager
     {
         private readonly IHeadPhoneDetailRepository repository;
         private readonly IMapper mapper;
+        private readonly IColorService service;
+        private readonly IBrandService brand;
 
-        public HeadPhonDetailManager(IHeadPhoneDetailRepository repository, IMapper mapper)
+        public HeadPhonDetailManager()
+        {
+
+        }
+        public HeadPhonDetailManager(IHeadPhoneDetailRepository repository, IMapper mapper, IColorService service, IBrandService brand)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.service = service;
+            this.brand = brand;
         }
 
         public List<ProductDetailHeadPhone> GetHeadPhoneList(Expression<Func<ProductDetailHeadPhone, bool>> filter = null)
@@ -45,6 +53,8 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
+            service.GetOneByColor(headPhone.ColorId);
+            brand.GetBrandOneById(headPhone.BrandId);
             var add = mapper.Map<ProductDetailHeadPhone>(headPhone);
             repository.Add(add);
             return add;
@@ -72,6 +82,11 @@ namespace Services.Manager
             update.CiftTelefonDestegi = headPhone.CiftTelefonDestegi;
             update.KullanimTipi = headPhone.KullanimTipi;
             update.SuyaTereDayanikli = headPhone.SuyaTereDayanikli;
+            update.BrandId = headPhone.BrandId;
+            update.ColorId= headPhone.ColorId;
+            update.Image1 = headPhone.Image1;
+            update.Image2 = headPhone.Image2;
+            update.Image3 = headPhone.Image3;
             repository.Update(update);
             return update;
         }

@@ -12,7 +12,6 @@ namespace ETrade.Presentation.Controllers
 {
     [ApiController]
     [Route("api/authentications")]
-    [Authorize]
     public class AuthenticationController:ControllerBase
     {
         private readonly IAuthenticationService service;
@@ -24,11 +23,15 @@ namespace ETrade.Presentation.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser([FromBody] UserDtoRegistraction registraction)
         {
-            var result = service.RegisterResult(registraction);
-            //if (!result)
-            //{
-
-            //}
+            var result =await service.RegisterResult(registraction);
+            if (result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return BadRequest(ModelState);
+            }
             return StatusCode(201);
         }
         [HttpPost("login")]

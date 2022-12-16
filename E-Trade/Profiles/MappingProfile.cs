@@ -23,6 +23,7 @@ namespace E_Trade.Profiles
             CreateMap<ManWomenDetailDto, ProductDetailManWomen>().ReverseMap();
             CreateMap<PhoneDetailDto, ProductDetailPhone>().ReverseMap();
             CreateMap<HeadPhoneDetailDto, ProductDetailHeadPhone>().ReverseMap();
+            CreateMap<BrandDto,Brand>().ReverseMap();
         }
     }
 }

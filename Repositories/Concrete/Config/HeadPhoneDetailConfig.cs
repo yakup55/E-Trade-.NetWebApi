@@ -19,6 +19,21 @@ namespace Repositories.Concrete.Config
             builder.Property(x => x.CiftTelefonDestegi).IsRequired();
             builder.Property(x => x.KullanimTipi).IsRequired();
             builder.Property(x => x.SuyaTereDayanikli).IsRequired();
-    }
+            // builder.HasData(
+
+            //new ProductDetailHeadPhone
+            //{
+            //    HeadPhoneId = 1,
+            //    GurultuOnleme = "",
+            //    BluetoothVersiyon = "",
+            //    CiftTelefonDestegi = "",
+            //    KullanimTipi = "",
+            //    SuyaTereDayanikli = "",
+            //    BrandId = 1
+            //});
+
+            builder.HasOne(x => x.Color).WithMany(x => x.ProductDetailHeadPhones).HasForeignKey(x => x.ColorId).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Brand).WithMany(x => x.ProductDetailHeadPhones).HasForeignKey(x => x.BrandId).OnDelete(DeleteBehavior.SetNull);
+        }
 }
 }

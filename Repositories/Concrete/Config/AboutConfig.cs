@@ -16,29 +16,6 @@ namespace Repositories.Concrete.Config
             builder.HasKey(x => x.AboutId);
             builder.Property(x => x.AboutDetails).IsRequired();
             builder.Property(x => x.AboutImage).IsRequired();
-
-            builder.HasData(
-                new About
-                {
-                    AboutId = 1,
-                    AboutDetails = "testtt",
-                    AboutImage = "eeeeeeeeeeeeeeeeee"
-                },
-           new About()
-           {
-               AboutId = 2,
-               AboutDetails = "testtt",
-               AboutImage = "eeeeeeeeeeeeeeeeee"
-           },
-         new About()
-         {
-             AboutId = 3,
-             AboutDetails = "testtt",
-             AboutImage = "eeeeeeeeeeeeeeeeee"
-         }
-
-                );
-
         }
     }
 }

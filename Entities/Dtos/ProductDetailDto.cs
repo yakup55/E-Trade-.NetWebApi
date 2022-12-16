@@ -13,23 +13,19 @@ namespace Entities.Dtos
         public int ProductId { get; set; }
 
         public string ProductExplanation { get; set; }
+            
+        public int TvId { get; set; }
 
-        public int? SizeId { get; set; }
+        public int WacthId { get; set; }
 
-        public int? ColorId { get; set; }
+        public int PhoneId { get; set; }
 
-        public int? NumberId { get; set; }
+        public int PcId { get; set; }
 
-        public int? PcId { get; set; }
+        public int ManWomenId { get; set; }
 
-        public int? HeadPhoneId { get; set; }
+        public int HeadPhoneId { get; set; }
 
-        public int? PhoneId { get; set; }
-
-        public int? ManWomenId { get; set; }
-
-        public int? TvId { get; set; }
-        public int? WacthId { get; set; }
 
         //public string SDDKapasite { get; set; }
         //public string RamTipi { get; set; }

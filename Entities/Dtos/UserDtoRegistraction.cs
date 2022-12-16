@@ -9,16 +9,16 @@ namespace Entities.Dtos
 {
     public record UserDtoRegistraction
     {
-        public string? UserFirstName { get; set; }
-        public string? UserLastName { get; set; }
+        public string? UserFirstName { get; init; }
+        public string? UserLastName { get; init; }
         [Required(ErrorMessage = "User Name is Required")]
-        public string? UserUserName { get; set; }
+        public string? UserUserName { get; init; }
 
         [Required(ErrorMessage = "Password is Required")]
-        public string? UserPassword { get; set; }
-        public string? UserEmail { get; set; }
-        public string? UserPhoneNumber { get; set; }
+        public string? UserPassword { get; init; }
+        public string? UserEmail { get; init; }
+        public string? UserPhoneNumber { get; init; }
 
-        public ICollection<string>? Roles { get; set; }
+        public ICollection<string>? Roles { get; init; }
     }
 }

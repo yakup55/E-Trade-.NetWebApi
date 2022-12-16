@@ -16,13 +16,15 @@ namespace Services.Manager
     public class SizeManager : ISizeService
     {
         private readonly ISizeRepository repository;
-        private readonly IProductDetailService service;
         private readonly IMapper mapper;
+        public SizeManager()
+        {
 
-        public SizeManager(ISizeRepository repository, IProductDetailService service, IMapper mapper)
+        }
+
+        public SizeManager(ISizeRepository repository, IMapper mapper)
         {
             this.repository = repository;
-            this.service = service;
             this.mapper = mapper;
         }
 
@@ -32,7 +34,6 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
-           //service.GetOneProductDetails(sizeDto.ProductDetailId);
             var size = mapper.Map<Size>(sizeDto);
             repository.Add(size);
             return size;

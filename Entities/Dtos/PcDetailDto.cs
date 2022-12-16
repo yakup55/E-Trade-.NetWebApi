@@ -19,6 +19,12 @@ namespace Entities.Dtos
         public string EkranBoyutu { get; set; }
         public string BellekHizi { get; set; }
         public string CihazAgirligi { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+
+        public int BrandId { get; set; }
+        public int ColorId { get; set; }
 
 
     }

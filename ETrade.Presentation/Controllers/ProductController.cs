@@ -86,6 +86,11 @@ namespace ETrade.Presentation.Controllers
         {
             return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus == true));
         }
+        [HttpGet("productbrand/{id:int}")]
+        public IActionResult ProductBrand([FromRoute(Name ="id")] int id)
+        {
+            return Ok(service.ProductBrand(id));
+        }
         [HttpGet("popularproduct")]
         public IActionResult PopularProduct()
         {

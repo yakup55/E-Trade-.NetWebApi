@@ -17,11 +17,22 @@ namespace Services.Manager
     {
         private readonly IManWomenDetailRepository repository;
         private readonly IMapper mapper;
+        private readonly IBrandService brand;
+        private readonly INumberService number;
+        private readonly ISizeService size;
 
-        public ManWomenDetailManager(IManWomenDetailRepository repository, IMapper mapper)
+        public ManWomenDetailManager()
+        {
+
+        }
+
+        public ManWomenDetailManager(IManWomenDetailRepository repository, IMapper mapper, IBrandService brand, INumberService number, ISizeService size)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.brand = brand;
+            this.number = number;
+            this.size = size;
         }
 
         public List<ProductDetailManWomen> GetManWomenList(Expression<Func<ProductDetailManWomen, bool>> filter = null)
@@ -31,7 +42,7 @@ namespace Services.Manager
 
         public ProductDetailManWomen GetOneManWomen(int id)
         {
-           var one=repository.GetOne(x=>x.ProductDetailManWomenId== id);
+            var one = repository.GetOne(x => x.ManWomenId == id);
             if (one is null)
             {
                 throw new ManWomenDetailNotFoundException(id);
@@ -41,11 +52,14 @@ namespace Services.Manager
 
         public ProductDetailManWomen ManWomenAdd(ManWomenDetailDto detailManWomen)
         {
-          if(detailManWomen is null)
+            if (detailManWomen is null)
             {
                 throw new ArgumentNullException();
             }
-          var add =mapper.Map<ProductDetailManWomen>(detailManWomen);
+            brand.GetBrandOneById(detailManWomen.BrandId);
+            size.GetOneBySizeId(detailManWomen.SizeId);
+            number.GetOneNumberId(detailManWomen.NumberId);
+            var add = mapper.Map<ProductDetailManWomen>(detailManWomen);
             repository.Add(add);
             return add;
         }
@@ -53,7 +67,7 @@ namespace Services.Manager
         public void ManWomenDelete(int id)
         {
             var one = GetOneManWomen(id);
-            if(one is null)
+            if (one is null)
             {
                 throw new ManWomenDetailNotFoundException(id);
             }
@@ -62,13 +76,20 @@ namespace Services.Manager
 
         public ProductDetailManWomen ManWomenUpdate(int id, ProductDetailManWomen detailManWomen)
         {
-           
+
             var update = GetOneManWomen(id);
-            update.AyakkabiTipi=detailManWomen.AyakkabiTipi;
-            update.Malzeme=detailManWomen.Malzeme;
-            update.Cinsiyet=detailManWomen.Cinsiyet;
-            update.YakaStili=detailManWomen.YakaStili;
-            update.Tipi=detailManWomen.Tipi;
+            update.AyakkabiTipi = detailManWomen.AyakkabiTipi;
+            update.Malzeme = detailManWomen.Malzeme;
+            update.Cinsiyet = detailManWomen.Cinsiyet;
+            update.YakaStili = detailManWomen.YakaStili;
+            update.Tipi = detailManWomen.Tipi;
+            update.BrandId=detailManWomen.BrandId;
+            update.SizeId=detailManWomen.SizeId;
+            update.NumberId=detailManWomen.NumberId;
+            update.ColorId=detailManWomen.ColorId;
+            update.Image1=detailManWomen.Image1;
+            update.Image2=detailManWomen.Image2;
+            update.Image3=detailManWomen.Image3;
             repository.Update(update);
             return update;
         }

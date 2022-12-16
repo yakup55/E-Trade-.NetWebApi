@@ -14,5 +14,6 @@ namespace Repositories.Contracts
         List<Product> GetAllProductWithDetailList();
         Product GetOneProductWithDetail(int id);
         List<Product> PopularProductList();
+        List<Product> ProductBrandList(int id);
     }
 }

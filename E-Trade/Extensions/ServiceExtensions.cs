@@ -29,8 +29,6 @@ namespace E_Trade.Extensions
         {
             services.AddDbContext<AppDbContext>(
                 x => x.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
-
-
         }
         public static void RegisterToIo(this IServiceCollection services)
         {
@@ -44,8 +42,8 @@ namespace E_Trade.Extensions
             services.AddScoped<IAboutService, AboutManager>();
             services.AddScoped<IAboutRepository, EFAboutRepository>();
             //PRODUCTDETAİL
+            services.AddScoped<IProductDetailRepository, EFProductDetailsRepository>();
             services.AddScoped<IProductDetailService, ProductDetailManager>();
-            services.AddScoped<EFProductDetailsRepository, EFProductDetailsRepository>();
             //COLOR
             services.AddScoped<IColorService, ColorManager>();
             services.AddScoped<IColorRepository, EFColorRepository>();
@@ -63,8 +61,8 @@ namespace E_Trade.Extensions
             services.AddScoped<INumberService, NumberManager>();
             //CONTACT
             services.AddScoped<IContactService, ContactManager>();
-            services.AddScoped<IContactRepository,EFContactRepository>();
-            //PC DETAİL
+            services.AddScoped<IContactRepository, EFContactRepository>();
+            ////PC DETAİL
             services.AddScoped<IPcDetailService, PcDetailManager>();
             services.AddScoped<IPcDetailRepository, EFPcDetailRepository>();
             //WACTH DETAİL
@@ -82,22 +80,24 @@ namespace E_Trade.Extensions
             //Phone DETAİL
             services.AddScoped<IPhoneDetailService, PhoneDetailManager>();
             services.AddScoped<IPhoneDetailRepository, EFPhoneDetailRepository>();
-           
+            //BRAND
+            services.AddScoped<IBrandRepository, EFBrandRepository>();
+            services.AddScoped<IBrandService, BrandManager>();
 
             //AUTHENTİCATİON
-            //services.AddScoped<IAuthenticationService, AuthenticationManager>();
+            services.AddScoped<IAuthenticationService, AuthenticationManager>();
         }
         //PASSWORD USER YÖNETİMİ
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             var builder = services.AddIdentity<User, IdentityRole>(opt =>
             {
-                opt.Password.RequireDigit = false;
+                opt.Password.RequireDigit = true;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequiredLength = 10;
-                opt.User.RequireUniqueEmail = false;
+                opt.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
         }
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)

@@ -20,6 +20,10 @@ namespace Services.Manager
         private readonly IMapper mapper;
         private readonly IProductDetailService service;
 
+        public ColorManager()
+        {
+
+        }
         public ColorManager(IColorRepository repository, IMapper mapper, IProductDetailService service)
         {
             this.repository = repository;

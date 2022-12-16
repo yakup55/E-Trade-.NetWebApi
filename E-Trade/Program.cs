@@ -1,4 +1,5 @@
 using E_Trade.Extensions;
+using Microsoft.Data.SqlClient;
 using Repositories.Contracts;
 using Repositories.EntityFramework;
 using Services.Manager;
@@ -14,7 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureCors();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.RegisterToIo();
-
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof (ETrade.Presentation.AssemblyReference).Assembly)

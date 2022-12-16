@@ -58,7 +58,7 @@ namespace ETrade.Presentation.Controllers
         [HttpGet("popularcategory")]
         public IActionResult PopularCategory()
         {
-            return Ok(service.GetCategoriesList().Where(x => x.CategoryId == 4 || x.CategoryId == 1 || x.CategoryId == 5 || x.CategoryId == 7 && x.CategoryStatus==true).ToList());
+            return Ok(service.GetCategoriesList().Where(x => x.CategoryId == 8 || x.CategoryId == 1 || x.CategoryId == 2 || x.CategoryId == 7 && x.CategoryStatus==true).ToList());
         }
         [HttpGet("categoryactive/{id:int}")]
         public IActionResult CategroryActive([FromRoute(Name ="id")]int id)

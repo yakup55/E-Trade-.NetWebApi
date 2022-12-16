@@ -18,6 +18,15 @@ namespace Entities.Models
         public string? CiftTelefonDestegi { get; set; }
         public string? KullanimTipi { get; set; }
         public string? SuyaTereDayanikli { get; set; }
+        public string? Image1 { get; set; }
+        public string? Image2 { get; set; }
+        public string? Image3 { get; set; }
+
+        public int? ColorId { get; set; }
+        public Color? Color { get; set; }
+
+        public int? BrandId { get; set; }
+        public Brand? Brand { get; set; }
 
         public ICollection<ProductDetails>? ProductDetails { get; set; }
     }

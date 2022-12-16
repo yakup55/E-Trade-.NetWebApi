@@ -18,14 +18,12 @@ namespace Services.Manager
     {
         private readonly IProductRepository productRepository;
         private readonly ICategoryService categoryService;
-        private readonly IProductDetailService productDetailService;
         private readonly IMapper mapper;
 
-        public ProductManager(IProductRepository productRepository, ICategoryService categoryService, IProductDetailService productDetailService, IMapper mapper)
+        public ProductManager(IProductRepository productRepository, ICategoryService categoryService, IMapper mapper)
         {
             this.productRepository = productRepository;
             this.categoryService = categoryService;
-            this.productDetailService = productDetailService;
             this.mapper = mapper;
         }
 
@@ -64,7 +62,21 @@ namespace Services.Manager
             {
                 throw new ArgumentNullException();
             }
-            return productRepository.GetList(x => x.ProductName.Contains(name) || x.Category.CategoryName.Contains(name) ||x.ProductDetails.Color.ColorName.Contains(name)||x.ProductDetails.Size.SizeName.Contains(name));
+            return productRepository.GetList(x => x.ProductName.Contains(name)
+            || x.Category.CategoryName.Contains(name)
+            || x.ProductDetails.ProductExplanation.Contains(name)
+            || x.ProductDetails.Pc.Color.ColorName.Contains(name)
+            || x.ProductDetails.Phone.Color.ColorName.Contains(name)
+            || x.ProductDetails.HeadPhone.Color.ColorName.Contains(name)
+            || x.ProductDetails.ManWomen.Color.ColorName.Contains(name)
+            || x.ProductDetails.Watch.Color.ColorName.Contains(name)
+            || x.ProductDetails.Watch.Brand.BrandName.Contains(name)
+            || x.ProductDetails.Tv.Brand.BrandName.Contains(name)
+            || x.ProductDetails.Phone.Brand.BrandName.Contains(name)
+            || x.ProductDetails.HeadPhone.Brand.BrandName.Contains(name)
+            || x.ProductDetails.ManWomen.Brand.BrandName.Contains(name)
+            || x.ProductDetails.Pc.Brand.BrandName.Contains(name)
+            );
         }
 
         public Product GetOneProduct(int id)
@@ -78,7 +90,7 @@ namespace Services.Manager
         }
         public Product GetOneProductWithDetail(int id)
         {
-          var one= productRepository.GetOneProductWithDetail(id);
+            var one = productRepository.GetOneProductWithDetail(id);
             if (one is null)
             {
                 throw new ProductDetailsNotFoundException(id);
@@ -88,15 +100,19 @@ namespace Services.Manager
 
         public List<Product> GetProductList(Expression<Func<Product, bool>> filter = null)
         {
-            return productRepository.GetList(filter).OrderByDescending(x=>x.ProductId).ToList();
+            return productRepository.GetList(filter).OrderByDescending(x => x.ProductId).ToList();
         }
 
         public List<Product> PopularProductList()
         {
-           return productRepository.PopularProductList();
+            return productRepository.PopularProductList();
         }
 
-       
+        public List<Product> ProductBrand(int id)
+        {
+            return productRepository.ProductBrandList(id);
+        }
+
         public Product UpdateProduct(Product product, int id)
         {
             var update = GetOneProduct(id);
@@ -104,7 +120,9 @@ namespace Services.Manager
             update.ProductDate = product.ProductDate;
             update.ProductDetails = product.ProductDetails;
             update.ProductPrice = product.ProductPrice;
-            update.ProductStatus=product.ProductStatus;
+            update.ProductStatus = product.ProductStatus;
+            update.ProductImage = product.ProductImage;
+            update.CategoryId = product.CategoryId;
             productRepository.Update(update);
             return update;
         }

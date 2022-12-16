@@ -30,12 +30,12 @@ namespace Repositories.EntityFramework
         public Product GetOneProductWithDetail(int id)
         {
             return context.Products
-                .Include(x => x.ProductDetails.ProductDetailPc)
-                .Include(x => x.ProductDetails.ProductDetailHeadPhone)
-                .Include(x => x.ProductDetails.ProductDetailPhone)
-                .Include(x => x.ProductDetails.ProductDetailTv)
-                .Include(x => x.ProductDetails.ProductDetailWatch)
-                .Include(x => x.ProductDetails.ProductDetailManWomen)
+                .Include(x => x.ProductDetails.Pc)
+                .Include(x => x.ProductDetails.HeadPhone)
+                .Include(x => x.ProductDetails.Phone)
+                .Include(x => x.ProductDetails.Tv)
+                .Include(x => x.ProductDetails.Watch)
+                .Include(x => x.ProductDetails.ManWomen)
                 .Include(x => x.Category).ToList().Where(x => x.ProductId == id).SingleOrDefault();
         }
 
@@ -44,6 +44,11 @@ namespace Repositories.EntityFramework
         public List<Product> PopularProductList()
         {
             return context.Products.Where(x => x.ProductId == 41 || x.ProductId == 35 || x.ProductId == 33 || x.ProductId == 27 || x.ProductId == 15 || x.ProductId == 5 && x.ProductStatus == true).ToList();
+        }
+
+        public List<Product> ProductBrandList(int id)
+        {
+           return context.Products.Where(x => x.ProductDetails.Pc.BrandId == id || x.ProductDetails.Watch.BrandId == id || x.ProductDetails.Tv.BrandId == id || x.ProductDetails.ManWomen.BrandId == id || x.ProductDetails.Phone.BrandId == id || x.ProductDetails.HeadPhone.BrandId == id && x.ProductStatus==true).ToList();
         }
     }
 }

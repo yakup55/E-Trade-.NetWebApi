@@ -42,26 +42,27 @@ namespace Repositories.Migrations
                     b.HasKey("AboutId");
 
                     b.ToTable("Abouts");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            AboutId = 1,
-                            AboutDetails = "testtt",
-                            AboutImage = "eeeeeeeeeeeeeeeeee"
-                        },
-                        new
-                        {
-                            AboutId = 2,
-                            AboutDetails = "testtt",
-                            AboutImage = "eeeeeeeeeeeeeeeeee"
-                        },
-                        new
-                        {
-                            AboutId = 3,
-                            AboutDetails = "testtt",
-                            AboutImage = "eeeeeeeeeeeeeeeeee"
-                        });
+            modelBuilder.Entity("Entities.Models.Brand", b =>
+                {
+                    b.Property<int>("BrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BrandId"), 1L, 1);
+
+                    b.Property<string>("BrandImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BrandId");
+
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("Entities.Models.Category", b =>
@@ -490,26 +491,6 @@ namespace Repositories.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductComments");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductCommentId = 1,
-                            CommentId = 2,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            ProductCommentId = 2,
-                            CommentId = 1,
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            ProductCommentId = 3,
-                            CommentId = 3,
-                            ProductId = 3
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailHeadPhone", b =>
@@ -524,12 +505,27 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CiftTelefonDestegi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GurultuOnleme")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KullanimTipi")
@@ -542,28 +538,53 @@ namespace Repositories.Migrations
 
                     b.HasKey("HeadPhoneId");
 
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
+
                     b.ToTable("ProductDetailHeadPhones");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailManWomen", b =>
                 {
-                    b.Property<int>("ProductDetailManWomenId")
+                    b.Property<int>("ManWomenId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailManWomenId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ManWomenId"), 1L, 1);
 
                     b.Property<string>("AyakkabiTipi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Cinsiyet")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Malzeme")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NumberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SizeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tipi")
                         .IsRequired()
@@ -573,26 +594,40 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductDetailManWomenId");
+                    b.HasKey("ManWomenId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("NumberId");
+
+                    b.HasIndex("SizeId");
 
                     b.ToTable("ProductDetailManWomens");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailPc", b =>
                 {
-                    b.Property<int>("ProductDetailPcId")
+                    b.Property<int>("PcId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailPcId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PcId"), 1L, 1);
 
                     b.Property<string>("BellekHizi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CihazAgirligi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("EkranBoyutu")
                         .IsRequired()
@@ -604,6 +639,15 @@ namespace Repositories.Migrations
 
                     b.Property<string>("EkranYenilemeHizi")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ram")
@@ -626,18 +670,37 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductDetailPcId");
+                    b.HasKey("PcId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
 
                     b.ToTable("ProductDetailPcs");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailPhone", b =>
                 {
-                    b.Property<int>("ProductDetailPhoneId")
+                    b.Property<int>("PhoneId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailPhoneId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PhoneId"), 1L, 1);
+
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("bluetooth")
                         .IsRequired()
@@ -667,7 +730,11 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductDetailPhoneId");
+                    b.HasKey("PhoneId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
 
                     b.ToTable("ProductDetailPhones");
                 });
@@ -680,16 +747,10 @@ namespace Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailsId"), 1L, 1);
 
-                    b.Property<int?>("ColorId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("HeadPhoneId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ManWomenId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NumberId")
                         .HasColumnType("int");
 
                     b.Property<int?>("PcId")
@@ -703,9 +764,7 @@ namespace Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SizeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("TvId")
@@ -716,45 +775,34 @@ namespace Repositories.Migrations
 
                     b.HasKey("ProductDetailsId");
 
-                    b.HasIndex("ColorId");
-
                     b.HasIndex("HeadPhoneId");
 
                     b.HasIndex("ManWomenId");
-
-                    b.HasIndex("NumberId");
 
                     b.HasIndex("PcId");
 
                     b.HasIndex("PhoneId");
 
                     b.HasIndex("ProductId")
-                        .IsUnique()
-                        .HasFilter("[ProductId] IS NOT NULL");
-
-                    b.HasIndex("SizeId");
+                        .IsUnique();
 
                     b.HasIndex("TvId");
 
                     b.HasIndex("WacthId");
 
                     b.ToTable("ProductDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductDetailsId = 1,
-                            ProductExplanation = "ddd"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailTv", b =>
                 {
-                    b.Property<int>("ProductDetailTvId")
+                    b.Property<int>("TvId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailTvId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TvId"), 1L, 1);
+
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DahiliUyduAlici")
                         .IsRequired()
@@ -771,6 +819,15 @@ namespace Repositories.Migrations
                     b.Property<string>("HdmiGirisleri")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Kurulum")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -783,25 +840,42 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductDetailTvId");
+                    b.HasKey("TvId");
+
+                    b.HasIndex("BrandId");
 
                     b.ToTable("ProductDetailTvs");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductDetailWatch", b =>
                 {
-                    b.Property<int>("ProductDetailWatchId")
+                    b.Property<int>("WatchId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailWatchId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WatchId"), 1L, 1);
 
                     b.Property<string>("AdımSayar")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GPS")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KalpRitmiOlcme")
@@ -828,7 +902,11 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductDetailWatchId");
+                    b.HasKey("WatchId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
 
                     b.ToTable("ProductDetailWatches");
                 });
@@ -989,15 +1067,15 @@ namespace Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "20b98993-a6eb-492f-a034-f38c9de769d9",
-                            ConcurrencyStamp = "86bb6303-3376-4480-8f93-9b09335cd467",
+                            Id = "4daab474-4f8d-4f93-b7c5-763096b259d4",
+                            ConcurrencyStamp = "6f574cf7-4b05-4838-9a09-cd63f0685a72",
                             Name = "MANAGER",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "4266f5f2-ab76-49ce-a557-0efe9efd69c4",
-                            ConcurrencyStamp = "ee0feac7-39fe-4e42-832a-f11eb90f8b31",
+                            Id = "a54c500c-61fc-4322-acc8-49b0cc6db8a6",
+                            ConcurrencyStamp = "0900c1b5-807f-4134-bb32-bde7f6ef3acc",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -1143,77 +1221,166 @@ namespace Repositories.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Entities.Models.ProductDetails", b =>
+            modelBuilder.Entity("Entities.Models.ProductDetailHeadPhone", b =>
                 {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailHeadPhones")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Entities.Models.Color", "Color")
-                        .WithMany("ProductDetails")
+                        .WithMany("ProductDetailHeadPhones")
                         .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Entities.Models.ProductDetailHeadPhone", "ProductDetailHeadPhone")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("HeadPhoneId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.Navigation("Brand");
 
-                    b.HasOne("Entities.Models.ProductDetailManWomen", "ProductDetailManWomen")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("ManWomenId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailManWomen", b =>
+                {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailManWomens")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.Color", "Color")
+                        .WithMany("ProductDetailManWomens")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Entities.Models.Number", "Number")
-                        .WithMany("ProductDetails")
+                        .WithMany("ProductDetailManWomens")
                         .HasForeignKey("NumberId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Entities.Models.ProductDetailPc", "ProductDetailPc")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("PcId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Entities.Models.ProductDetailPhone", "ProductDetailPhone")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("PhoneId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Entities.Models.Product", "Product")
-                        .WithOne("ProductDetails")
-                        .HasForeignKey("Entities.Models.ProductDetails", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Entities.Models.Size", "Size")
-                        .WithMany("ProductDetails")
+                        .WithMany("ProductDetailManWomens")
                         .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Entities.Models.ProductDetailTv", "ProductDetailTv")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("TvId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Entities.Models.ProductDetailWatch", "ProductDetailWatch")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("WacthId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.Navigation("Brand");
 
                     b.Navigation("Color");
 
                     b.Navigation("Number");
 
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPc", b =>
+                {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailPcs")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.Color", "Color")
+                        .WithMany("ProductDetailPcs")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetailPhone", b =>
+                {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailPhones")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.Color", "Color")
+                        .WithMany("ProductDetailPhones")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.Models.ProductDetails", b =>
+                {
+                    b.HasOne("Entities.Models.ProductDetailHeadPhone", "HeadPhone")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("HeadPhoneId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.ProductDetailManWomen", "ManWomen")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("ManWomenId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Entities.Models.ProductDetailPc", "Pc")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("PcId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.ProductDetailPhone", "Phone")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("PhoneId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.Product", "Product")
+                        .WithOne("ProductDetails")
+                        .HasForeignKey("Entities.Models.ProductDetails", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.ProductDetailTv", "Tv")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("TvId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Entities.Models.ProductDetailWatch", "Watch")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("WacthId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("HeadPhone");
+
+                    b.Navigation("ManWomen");
+
+                    b.Navigation("Pc");
+
+                    b.Navigation("Phone");
+
                     b.Navigation("Product");
 
-                    b.Navigation("ProductDetailHeadPhone");
+                    b.Navigation("Tv");
 
-                    b.Navigation("ProductDetailManWomen");
+                    b.Navigation("Watch");
+                });
 
-                    b.Navigation("ProductDetailPc");
+            modelBuilder.Entity("Entities.Models.ProductDetailTv", b =>
+                {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailTvs")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("ProductDetailPhone");
+                    b.Navigation("Brand");
+                });
 
-                    b.Navigation("ProductDetailTv");
+            modelBuilder.Entity("Entities.Models.ProductDetailWatch", b =>
+                {
+                    b.HasOne("Entities.Models.Brand", "Brand")
+                        .WithMany("ProductDetailWatches")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("ProductDetailWatch");
+                    b.HasOne("Entities.Models.Color", "Color")
+                        .WithMany("ProductDetailWatches")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("Size");
+                    b.Navigation("Brand");
+
+                    b.Navigation("Color");
                 });
 
             modelBuilder.Entity("Entities.Models.User", b =>
@@ -1274,6 +1441,21 @@ namespace Repositories.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Entities.Models.Brand", b =>
+                {
+                    b.Navigation("ProductDetailHeadPhones");
+
+                    b.Navigation("ProductDetailManWomens");
+
+                    b.Navigation("ProductDetailPcs");
+
+                    b.Navigation("ProductDetailPhones");
+
+                    b.Navigation("ProductDetailTvs");
+
+                    b.Navigation("ProductDetailWatches");
+                });
+
             modelBuilder.Entity("Entities.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -1281,7 +1463,15 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Entities.Models.Color", b =>
                 {
-                    b.Navigation("ProductDetails");
+                    b.Navigation("ProductDetailHeadPhones");
+
+                    b.Navigation("ProductDetailManWomens");
+
+                    b.Navigation("ProductDetailPcs");
+
+                    b.Navigation("ProductDetailPhones");
+
+                    b.Navigation("ProductDetailWatches");
                 });
 
             modelBuilder.Entity("Entities.Models.Gender", b =>
@@ -1291,7 +1481,7 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Entities.Models.Number", b =>
                 {
-                    b.Navigation("ProductDetails");
+                    b.Navigation("ProductDetailManWomens");
                 });
 
             modelBuilder.Entity("Entities.Models.Product", b =>
@@ -1333,7 +1523,7 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Entities.Models.Size", b =>
                 {
-                    b.Navigation("ProductDetails");
+                    b.Navigation("ProductDetailManWomens");
                 });
 #pragma warning restore 612, 618
         }
