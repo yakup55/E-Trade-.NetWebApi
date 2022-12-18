@@ -43,7 +43,7 @@ namespace Services.Manager
 
         public List<ProductDetailWatch> GetWacthList(Expression<Func<ProductDetailWatch, bool>> filter = null)
         {
-           return repository.GetList(filter);
+           return repository.GetList(filter).OrderByDescending(x=>x.WatchId).ToList();
         }
 
         public ProductDetailWatch WatchAdd(WacthDetailDto detailWatch)

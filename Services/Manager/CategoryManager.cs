@@ -44,7 +44,7 @@ namespace Services.Manager
 
         public List<Category> GetCategoriesList(Expression<Func<Category, bool>> filter)
         {
-            return categoryRepository.GetList(filter);
+            return categoryRepository.GetList(filter).OrderByDescending(x => x.CategoryId).ToList() ;
         }
 
         public Category GetCategoryById(int id)

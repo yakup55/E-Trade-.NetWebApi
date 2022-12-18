@@ -37,7 +37,7 @@ namespace Services.Manager
 
         public List<ProductDetailManWomen> GetManWomenList(Expression<Func<ProductDetailManWomen, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x=>x.ManWomenId).ToList();
         }
 
         public ProductDetailManWomen GetOneManWomen(int id)

@@ -52,7 +52,7 @@ namespace Services.Manager
 
         public List<About> GetAboutList(Expression<Func<About, bool>> filter)
         {
-            return aboutRepository.GetList(filter);
+            return aboutRepository.GetList(filter).OrderByDescending(x=>x.AboutId).ToList();
         }
 
         public List<About> GetLastAbout()

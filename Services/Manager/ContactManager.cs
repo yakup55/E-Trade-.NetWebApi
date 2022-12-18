@@ -52,7 +52,7 @@ namespace Services.Manager
 
         public List<Contact> GetContactList(Expression<Func<Contact, bool>> filter = null)
         {
-        return repository.GetList(filter);
+        return repository.GetList(filter).OrderByDescending(x=>x.ContactId).ToList();
         }
 
         public Contact UpdateContact(Contact contact, int id)

@@ -34,7 +34,7 @@ namespace Services.Manager
 
         public List<ProductDetailHeadPhone> GetHeadPhoneList(Expression<Func<ProductDetailHeadPhone, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x=>x.HeadPhoneId).ToList();
         }
 
         public ProductDetailHeadPhone GetOneHeadPhone(int id)

@@ -45,7 +45,7 @@ namespace Services.Manager
 
         public List<ProductDetailPhone> GetPhoneList(Expression<Func<ProductDetailPhone, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x=>x.PhoneId).ToList();
         }
 
         public ProductDetailPhone PhoneAdd(PhoneDetailDto detailPhone)

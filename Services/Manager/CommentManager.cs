@@ -48,7 +48,7 @@ namespace Services.Manager
 
         public List<Comment> GetCommentList(Expression<Func<Comment, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x => x.CommentId).ToList() ;
         }
 
         public Comment GetOneComment(int id)

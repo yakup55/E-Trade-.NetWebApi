@@ -51,7 +51,7 @@ namespace Services.Manager
 
         public List<Brand> GetBrandList(Expression<Func<Brand, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x=>x.BrandId).ToList();
         }
 
         public Brand GetBrandOneById(int id)

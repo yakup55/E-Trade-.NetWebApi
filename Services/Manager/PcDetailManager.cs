@@ -45,7 +45,7 @@ namespace Services.Manager
 
         public List<ProductDetailPc> GetPcList(Expression<Func<ProductDetailPc, bool>> filter = null)
         {
-            return repository.GetList(filter);
+            return repository.GetList(filter).OrderByDescending(x=>x.PcId).ToList();
         }
 
         public ProductDetailPc PcAdd(PcDetailDto detailPc)

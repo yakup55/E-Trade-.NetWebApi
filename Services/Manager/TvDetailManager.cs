@@ -41,7 +41,7 @@ namespace Services.Manager
 
         public List<ProductDetailTv> GetTvList(Expression<Func<ProductDetailTv, bool>> filter = null)
         {
-          return repository.GetList(filter);
+          return repository.GetList(filter).OrderByDescending(x=>x.TvId).ToList();
         }
 
         public ProductDetailTv TvAdd(TvDetailDto detailTv)

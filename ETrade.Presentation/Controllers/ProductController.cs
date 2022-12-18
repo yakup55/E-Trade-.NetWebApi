@@ -110,6 +110,16 @@ namespace ETrade.Presentation.Controllers
             status.ProductStatus = false;
             return Ok(Accepted(service.UpdateProduct(status, id)));
         }
+        [HttpGet("productpricesinking")]
+        public IActionResult ProductPriceSinking()
+        {
+            return Ok(service.ProductPriceSinking());
+        }
+        [HttpGet("productpricegrowing")]
+        public IActionResult ProductPriceGrowing()
+        {
+            return Ok(service.ProductPriceGrowing());
+        }
 
     }
 }

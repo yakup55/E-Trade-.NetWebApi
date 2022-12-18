@@ -113,6 +113,16 @@ namespace Services.Manager
             return productRepository.ProductBrandList(id);
         }
 
+        public List<Product> ProductPriceGrowing()
+        {
+            return productRepository.ProductPriceGrowing();
+        }
+
+        public List<Product> ProductPriceSinking()
+        {
+            return productRepository.ProductPriceSinking();
+        }
+
         public Product UpdateProduct(Product product, int id)
         {
             var update = GetOneProduct(id);

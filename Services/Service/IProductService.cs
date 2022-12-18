@@ -25,5 +25,8 @@ namespace Services.Service
         List<Product> ProductBrand(int id);
 
         List<Product> GetAllProductWithDetailList();
+
+        List<Product> ProductPriceSinking();
+        List<Product> ProductPriceGrowing();
     }
 }
