@@ -113,6 +113,48 @@ namespace Services.Manager
             return productRepository.ProductBrandList(id);
         }
 
+        public List<Product> ProductCategoryList(int id)
+        {
+         return productRepository.ProductCategoryList(id);
+        }
+
+        public List<Product> ProductColorList(int id)
+        {
+            return productRepository.ProductColorList(id);
+        }
+
+        public List<Product> ProductList2(int id)
+        {
+            return productRepository.ProductList2(id);
+        }
+
+        public List<Product> ProductNumberList(int id)
+        {
+            return productRepository.ProductNumberList(id);
+        }
+
+        public List<Product> ProductPrice1()
+        {
+            return productRepository.ProductPrice1();
+        }
+
+        public List<Product> ProductPrice2()
+        {
+            return productRepository.ProductPrice2();
+        }
+
+        public List<Product> ProductPrice3()
+        {
+            return productRepository.ProductPrice3();
+        }
+
+        public List<Product> ProductPrice4()
+        {
+            return productRepository.ProductPrice4();
+        }
+
+       
+
         public List<Product> ProductPriceGrowing()
         {
             return productRepository.ProductPriceGrowing();
@@ -123,12 +165,16 @@ namespace Services.Manager
             return productRepository.ProductPriceSinking();
         }
 
+        public List<Product> ProductSizeList(int id)
+        {
+           return productRepository.ProductSizeList(id);
+        }
+
         public Product UpdateProduct(Product product, int id)
         {
             var update = GetOneProduct(id);
             update.ProductName = product.ProductName;
             update.ProductDate = product.ProductDate;
-            update.ProductDetails = product.ProductDetails;
             update.ProductPrice = product.ProductPrice;
             update.ProductStatus = product.ProductStatus;
             update.ProductImage = product.ProductImage;

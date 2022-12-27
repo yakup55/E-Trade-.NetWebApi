@@ -46,8 +46,8 @@ namespace Entities.Models
 
         public ICollection<Comment>? Comments { get; set; }
 
-        public ProductDetails? ProductDetails { get; set; }
-        
+         public ProductDetails ProductDetails { get; set; }
+       // public ICollection<ProductDetails>? ProductDetails { get; set; }
 
         public override string ToString()
         {

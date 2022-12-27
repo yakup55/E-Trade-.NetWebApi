@@ -10,5 +10,6 @@ namespace Repositories.Contracts
     public interface ICategoryRepository:IEntityRepository<Category>
     {
         List<Category> LastCategory();
+      
     }
 }

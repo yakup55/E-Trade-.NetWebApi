@@ -15,8 +15,8 @@ namespace Services.Service
         List<Product> GetListByString(string name);
         Product GetOneProduct(int id);
         Product AddProduct(ProductDto productDto);
-     
-        
+
+
         Product UpdateProduct(Product product, int id);
         void DeleteProduct(int id);
         List<Product> GetLastProduct();
@@ -27,6 +27,17 @@ namespace Services.Service
         List<Product> GetAllProductWithDetailList();
 
         List<Product> ProductPriceSinking();
+        List<Product> ProductPrice1();
+        List<Product> ProductPrice2();
+        List<Product> ProductPrice3();
+        List<Product> ProductPrice4();
+
+
         List<Product> ProductPriceGrowing();
+        List<Product> ProductList2(int id);
+        List<Product> ProductCategoryList(int id);
+        List<Product> ProductColorList(int id);
+        List<Product> ProductNumberList(int id);
+        List<Product> ProductSizeList(int id);
     }
 }

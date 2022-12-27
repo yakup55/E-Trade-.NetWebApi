@@ -17,5 +17,14 @@ namespace Repositories.Contracts
         List<Product> ProductBrandList(int id);
         List<Product> ProductPriceSinking();
         List<Product> ProductPriceGrowing();
+        List<Product> ProductList2(int id);
+        List<Product> ProductCategoryList(int id);
+        List<Product> ProductColorList(int id);
+        List<Product> ProductNumberList(int id);
+        List<Product> ProductSizeList(int id);
+        List<Product> ProductPrice1();
+        List<Product> ProductPrice2();
+        List<Product> ProductPrice3();
+        List<Product> ProductPrice4();
     }
 }

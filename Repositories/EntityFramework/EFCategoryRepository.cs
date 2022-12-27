@@ -15,6 +15,8 @@ namespace Repositories.EntityFramework
         {
         }
 
+       
+
         public List<Category> LastCategory()
         {
             return context.Categories.OrderByDescending(x => x.CategoryId).Take(4).ToList() ;

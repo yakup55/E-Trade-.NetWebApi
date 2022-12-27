@@ -43,7 +43,7 @@ namespace ETrade.Presentation.Controllers
                 return Ok(service.GetListByString(product));
             }
             return null;
-            
+
         }
         [HttpPost]
         public IActionResult AddProduct([FromBody] ProductDto product)
@@ -52,7 +52,7 @@ namespace ETrade.Presentation.Controllers
             service.AddProduct(product);
             return Ok(product);
         }
-       
+
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {
@@ -87,7 +87,7 @@ namespace ETrade.Presentation.Controllers
             return Ok(service.GetProductList().Where(x => x.CategoryId == id && x.ProductStatus == true));
         }
         [HttpGet("productbrand/{id:int}")]
-        public IActionResult ProductBrand([FromRoute(Name ="id")] int id)
+        public IActionResult ProductBrand([FromRoute(Name = "id")] int id)
         {
             return Ok(service.ProductBrand(id));
         }
@@ -120,6 +120,53 @@ namespace ETrade.Presentation.Controllers
         {
             return Ok(service.ProductPriceGrowing());
         }
+        [HttpGet("productlist2/{id:int}")]
+        public IActionResult ProductList2([FromRoute] int id)
+        {
+            return Ok(service.ProductList2(id));
+        }
+        [HttpGet("productcategorylist/{id:int}")]
+        public IActionResult ProductCategoryList([FromRoute] int id)
+        {
+            return Ok(service.ProductCategoryList(id));
+        }
+        [HttpGet("productcolorlist/{id:int}")]
+        public IActionResult ProductColorList([FromRoute(Name = "id")] int id)
+        {
+            return Ok(service.ProductColorList(id));
+        }
+        [HttpGet("productnumberlist/{id:int}")]
+        public IActionResult ProductNumberList([FromRoute] int id)
+        {
+            return Ok(service.ProductNumberList(id));
 
+
+
+        }
+        [HttpGet("productsizelist/{id:int}")]
+        public IActionResult ProductSizeList([FromRoute] int id)
+        {
+            return Ok(service.ProductSizeList(id));
+        }
+        [HttpGet("productprice1")]
+        public IActionResult ProductPrice1List()
+        {
+            return Ok(service.ProductPrice1());
+        }
+        [HttpGet("productprice2")]
+        public IActionResult ProductPrice2List()
+        {
+            return Ok(service.ProductPrice2());
+        }
+        [HttpGet("productprice3")]
+        public IActionResult ProductPrice3List()
+        {
+            return Ok(service.ProductPrice3());
+        }
+        [HttpGet("productprice4")]
+        public IActionResult ProductPrice4List()
+        {
+            return Ok(service.ProductPrice4());
+        }
     }
 }

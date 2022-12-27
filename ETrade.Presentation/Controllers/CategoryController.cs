@@ -74,5 +74,6 @@ namespace ETrade.Presentation.Controllers
             status.CategoryStatus= false;
             return Ok(Accepted(service.UpdateCategory(status, id)));
         }
+      
     }
 }

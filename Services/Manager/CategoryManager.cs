@@ -36,6 +36,8 @@ namespace Services.Manager
             return category;
         }
 
+       
+
         public void DeleteCategory(int id)
         {
             var delete = GetCategoryById(id);

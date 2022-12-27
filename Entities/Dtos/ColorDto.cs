@@ -9,6 +9,5 @@ namespace Entities.Dtos
     public record ColorDto
     {
         public string ColorName { get; set; }
-        public int ProductDetailId { get; set; }
     }
 }

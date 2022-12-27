@@ -34,7 +34,7 @@ namespace Entities.Models
         public ProductDetailHeadPhone? HeadPhone { get; set; }
 
         [Required]
-        public int? ProductId { get; set; }
+        public int ProductId { get; set; }
         public Product? Product { get; set; }
 
     }

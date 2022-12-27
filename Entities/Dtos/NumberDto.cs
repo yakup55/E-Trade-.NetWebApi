@@ -9,6 +9,5 @@ namespace Entities.Dtos
     public record NumberDto
     {
         public int ShoesNumber { get; set; }
-        public int ProductDetailId { get; set; }
     }
 }
